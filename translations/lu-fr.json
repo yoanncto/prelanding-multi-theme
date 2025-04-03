@@ -1,0 +1,98 @@
+{
+  "title": "Grande Liquidation",
+  "urgency": "Vente Flash • Temps Très Limité",
+  "product": {
+    "name": "Luxura™ Smartwatch",
+    "description": "Montre connectée premium avec fonctionnalités avancées.",
+    "price": {
+      "original": "59,99€",
+      "discounted": "1,99€"
+    }
+  },
+  "cta": {
+    "main": "Ajouter au Panier",
+    "final": "Acheter Maintenant"
+  },
+  "games": {
+    "box": {
+      "title": "Choisissez Votre Box Chance",
+      "description": "Sélectionnez une box pour révéler votre offre exclusive.",
+      "result": "Félicitations ! Vous avez débloqué une offre exclusive"
+    },
+    "slot": {
+      "title": "Machine à Sous",
+      "description": "Faites tourner la machine pour découvrir votre offre spéciale !",
+      "button": "Tourner",
+      "spinning": "Tourne..."
+    },
+    "scratch": {
+      "title": "Carte à Gratter",
+      "description": "Grattez pour découvrir votre offre spéciale !",
+      "instruction": "Touchez pour Révéler"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Offre Exceptionnelle",
+      "exclusive_deal": "Offre Exclusive",
+      "delivery": "Livraison GRATUITE",
+      "delivery_time": "pour demain",
+      "deal_tag": "Offre"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "Prix conseillé :"
+    },
+    "result": {
+      "deal_unlocked": "Offre spéciale débloquée !",
+      "get": "Obtenez",
+      "for": "maintenant pour seulement",
+      "exclusive": "Offre exclusive",
+      "limited": "Offre à durée limitée - Commandez maintenant"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Vente Flash",
+    "badge": "Offre à Durée Limitée",
+    "verified_seller": "Vendeur Vérifié",
+    "deal_tag": "PROMO",
+    "list_price": "Prix normal :",
+    "shipping": "Livraison Rapide & Sécurisée",
+    "delivery": "Livraison Express",
+    "delivery_time": "2-5 Jours Ouvrés",
+    "product": {
+      "verified": "Vérifié",
+      "list_price": "Prix normal :"
+    },
+    "result": {
+      "deal_unlocked": "Offre flash débloquée !",
+      "get": "Obtenez",
+      "for": "maintenant pour seulement",
+      "exclusive": "Offre exclusive boutique.",
+      "limited": "Offre à durée limitée - Achetez maintenant"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Offres du Jour",
+    "badge": "Offre du Jour",
+    "deal_badge": "Offre Spéciale du Jour",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "OFFRE",
+    "list_price": "Était :",
+    "shipping": "Livraison Rapide & Gratuite",
+    "delivery": "Livraison Express",
+    "delivery_time": "Retours sous 30 Jours",
+    "fast_shipping": "Livraison Express",
+    "product": {
+      "top_rated": "Vendeur Top Rated Plus",
+      "list_price": "Était :"
+    },
+    "result": {
+      "deal_unlocked": "Offre débloquée !",
+      "get": "Obtenez",
+      "for": "maintenant pour seulement",
+      "exclusive": "Offre exclusive eBay.",
+      "limited": "Offre à durée limitée - Achetez maintenant"
+    }
+  }
+} 

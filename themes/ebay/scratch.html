@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title data-i18n="ebay.exclusive_deal"></title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="translations/translations.js"></script>
+<style>
+  /* Theme-specific styles only */
+  .ebay-button {
+    background: #0063D1;
+    transition: background-color 0.2s;
+  }
+  .ebay-button:hover {
+    background: #004998;
+  }
+  .deal-badge {
+    background: linear-gradient(135deg, #0063D1 30%, #004998 100%);
+  }
+</style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+<div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+  <!-- eBay Logo -->
+  <div class="mb-6">
+    <svg class="w-24 h-8" viewBox="0 0 124 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.75684 14.252H0V28.8601H7.75684C11.1094 28.8601 13.7129 26.7939 13.7129 21.7197C13.7129 16.5674 11.1094 14.252 7.75684 14.252Z" fill="#E53238"/>
+      <path d="M38.3789 14.252H30.6221V28.8601H38.3789C41.7314 28.8601 44.335 26.7939 44.335 21.7197C44.335 16.5674 41.7314 14.252 38.3789 14.252Z" fill="#0064D2"/>
+      <path d="M69.001 14.252H61.2441V28.8601H69.001C72.3535 28.8601 74.957 26.7939 74.957 21.7197C74.957 16.5674 72.3535 14.252 69.001 14.252Z" fill="#F5AF02"/>
+      <path d="M99.6231 14.252H91.8662V28.8601H99.6231C102.976 28.8601 105.579 26.7939 105.579 21.7197C105.579 16.5674 102.976 14.252 99.6231 14.252Z" fill="#86B817"/>
+    </svg>
+  </div>
+
+  <!-- Headline & Deal Badge -->
+  <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-2" data-i18n="ebay.exclusive_deal"></h1>
+  <div class="deal-badge text-white px-4 py-1 rounded-full text-sm font-bold mb-6" data-i18n="ebay.deal_badge"></div>
+
+  <!-- Product Details -->
+  <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6 text-center border border-gray-200">
+    <!-- Product Image -->
+    <div class="mb-6">
+      <img src="{PRODUCT_IMAGE}" alt="Product Image" class="w-full h-auto object-cover rounded-md">
+    </div>
+
+    <!-- Product & Brand Name -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-2" id="productName">{PRODUCT_NAME}</h2>
+
+    <!-- Top Rated Badge -->
+    <div class="bg-[#0063D1] text-white inline-block px-3 py-1 rounded text-sm font-semibold mb-4">
+      <span data-i18n="ebay.product.top_rated"></span>
+    </div>
+
+    <!-- Pricing -->
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <span class="text-red-600 font-bold text-sm" data-i18n="ebay.deal_tag"></span>
+      <span class="text-3xl font-bold text-gray-900" id="productPrice">{PRODUCT_PRICE}</span>
+      <span class="text-sm text-gray-500">
+        <span data-i18n="ebay.product.list_price"></span> <span class="line-through" id="productRetailPrice">{PRODUCT_RETAIL_PRICE}</span>
+      </span>
+    </div>
+
+    <!-- Shipping Info -->
+    <p class="text-sm text-gray-700 mb-4">
+      <span class="text-[#0063D1] font-bold" data-i18n="ebay.fast_shipping"></span> <span data-i18n="ebay.delivery_time"></span>
+    </p>
+
+    <!-- Call to Action -->
+    <button id="openGame" class="ebay-button w-full text-center text-white font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.main"></button>
+  </div>
+</div>
+
+<!-- Overlay for the Mini-Game -->
+<div id="gameOverlay" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center px-4 hidden">
+  <!-- Game Content Container -->
+  <div id="gameContent" class="max-w-md w-full bg-white rounded-lg p-6 text-center">
+    <h2 class="text-xl text-gray-900 font-bold mb-4" data-i18n="games.scratch.title"></h2>
+    <p class="text-sm text-gray-600 mb-6" data-i18n="games.scratch.description"></p>
+
+    <!-- Scratch Card Container -->
+    <div class="relative w-full aspect-[3/4] mx-auto rounded-lg overflow-hidden">
+      <!-- Product Image & Win Message Underneath -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center p-4 bg-white">
+        <img src="{PRODUCT_IMAGE}" alt="Product Found" class="w-full h-auto max-h-48 object-contain rounded-md mb-4">
+        <div class="bg-[#0063D1] text-white p-4 rounded-lg mb-4">
+          <p class="text-sm mb-2">
+            <span data-i18n="ebay.result.deal_unlocked"></span> 
+            <span data-i18n="ebay.result.get"></span> 
+            <span id="resultProductName">{PRODUCT_NAME}</span> 
+            <span data-i18n="ebay.result.for"></span> 
+            <span id="resultProductPrice">{PRODUCT_PRICE}</span>. 
+            <span data-i18n="ebay.result.exclusive"></span>
+          </p>
+          <p class="text-xs text-gray-300" data-i18n="ebay.result.limited"></p>
+        </div>
+      </div>
+
+      <!-- Reveal Cover -->
+      <div id="revealCover" class="absolute inset-0 rounded-lg flex items-center justify-center text-3xl text-white font-bold bg-[#0063D1] cursor-pointer">
+        <div class="flex flex-col items-center">
+          <svg class="w-16 h-16 mb-2" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+          </svg>
+          <span data-i18n="games.scratch.instruction"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Section -->
+  <div id="resultSection" class="max-w-md w-full bg-white rounded-lg p-6 text-center hidden">
+    <img src="{PRODUCT_IMAGE}" alt="Product Found" class="w-full h-auto object-cover rounded-md mb-4">
+    <div class="bg-[#0063D1] text-white p-4 rounded-lg mb-4">
+      <p class="text-sm mb-2">
+        <span data-i18n="ebay.result.deal_unlocked"></span> 
+        <span data-i18n="ebay.result.get"></span> 
+        <span id="resultProductName">{PRODUCT_NAME}</span> 
+        <span data-i18n="ebay.result.for"></span> 
+        <span id="resultProductPrice">{PRODUCT_PRICE}</span>. 
+        <span data-i18n="ebay.result.exclusive"></span>
+      </p>
+      <p class="text-xs text-gray-300" data-i18n="ebay.result.limited"></p>
+    </div>
+    <a href="{CHECKOUT_LINK}" class="ebay-button inline-block w-full text-white font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.final"></a>
+  </div>
+</div>
+
+</body>
+</html> 

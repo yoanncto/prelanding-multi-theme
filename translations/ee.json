@@ -1,0 +1,98 @@
+{
+  "title": "Suur Müük",
+  "urgency": "Flash Müük • Väga Piiratud Aeg",
+  "product": {
+    "name": "Luxura™ Smartwatch",
+    "description": "Premium nutikell täiustatud funktsioonidega.",
+    "price": {
+      "original": "59,99€",
+      "discounted": "1,99€"
+    }
+  },
+  "cta": {
+    "main": "Lisa Ostukorvi",
+    "final": "Osta Kohe"
+  },
+  "games": {
+    "box": {
+      "title": "Vali Oma Karp",
+      "description": "Vali karp, et avada oma eksklusiivne pakkumine.",
+      "result": "Palju õnne! Oled avanud eksklusiivse pakkumise"
+    },
+    "slot": {
+      "title": "Õnneautomaat",
+      "description": "Keera automaati, et avastada oma eripakkumine!",
+      "button": "Keera",
+      "spinning": "Keerutab..."
+    },
+    "scratch": {
+      "title": "Kraapekaart",
+      "description": "Kraabi, et avastada oma eripakkumine!",
+      "instruction": "Puuduta Avamiseks"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Erakordne Pakkumine",
+      "exclusive_deal": "Eksklusiivne Pakkumine",
+      "delivery": "TASUTA Kohaletoimetamine",
+      "delivery_time": "homseks",
+      "deal_tag": "Pakkumine"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "Soovituslik hind:"
+    },
+    "result": {
+      "deal_unlocked": "Eripakkumine Avatud!",
+      "get": "Hangi",
+      "for": "nüüd ainult",
+      "exclusive": "Eksklusiivne pakkumine",
+      "limited": "Ajaliselt piiratud pakkumine - Telli kohe"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Flash Müük",
+    "badge": "Ajaliselt Piiratud Pakkumine",
+    "verified_seller": "Kontrollitud Müüja",
+    "deal_tag": "MÜÜK",
+    "list_price": "Tavahind:",
+    "shipping": "Kiire & Turvaline Kohaletoimetamine",
+    "delivery": "Ekspress Kohaletoimetamine",
+    "delivery_time": "2-5 Tööpäeva",
+    "product": {
+      "verified": "Kontrollitud",
+      "list_price": "Tavahind:"
+    },
+    "result": {
+      "deal_unlocked": "Flash Müügi Pakkumine Avatud!",
+      "get": "Hangi",
+      "for": "nüüd ainult",
+      "exclusive": "Eksklusiivne poe pakkumine.",
+      "limited": "Ajaliselt piiratud pakkumine - Osta kohe"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Päeva Pakkumised",
+    "badge": "Tänane Pakkumine",
+    "deal_badge": "Eriline Päeva Pakkumine",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "MÜÜK",
+    "list_price": "Oli:",
+    "shipping": "Kiire & Tasuta Kohaletoimetamine",
+    "delivery": "Ekspress Kohaletoimetamine",
+    "delivery_time": "30-Päevane Tagastusõigus",
+    "fast_shipping": "Ekspress Kohaletoimetamine",
+    "product": {
+      "top_rated": "Top Rated Plus Müüja",
+      "list_price": "Oli:"
+    },
+    "result": {
+      "deal_unlocked": "Pakkumine Avatud!",
+      "get": "Hangi",
+      "for": "nüüd ainult",
+      "exclusive": "Eksklusiivne eBay pakkumine.",
+      "limited": "Ajaliselt piiratud pakkumine - Osta kohe"
+    }
+  }
+} 

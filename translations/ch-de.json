@@ -1,0 +1,98 @@
+{
+  "title": "Grosser Ausverkauf",
+  "urgency": "Blitzverkauf • Sehr begrenzte Zeit",
+  "product": {
+    "name": "Luxura™ Smartwatch",
+    "description": "Premium-Smartwatch mit erweiterten Funktionen.",
+    "price": {
+      "original": "59,99€",
+      "discounted": "1,99€"
+    }
+  },
+  "cta": {
+    "main": "In den Warenkorb",
+    "final": "Jetzt Kaufen"
+  },
+  "games": {
+    "box": {
+      "title": "Wählen Sie Ihre Glücksbox",
+      "description": "Wählen Sie eine Box, um Ihr exklusives Angebot zu enthüllen.",
+      "result": "Herzlichen Glückwunsch! Sie haben ein exklusives Angebot freigeschaltet"
+    },
+    "slot": {
+      "title": "Glücksautomat",
+      "description": "Drehen Sie den Automaten, um Ihr Sonderangebot zu entdecken!",
+      "button": "Drehen",
+      "spinning": "Dreht sich..."
+    },
+    "scratch": {
+      "title": "Glückskarte",
+      "description": "Kratzen Sie, um Ihr Sonderangebot zu entdecken!",
+      "instruction": "Zum Aufdecken Berühren"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Aussergewöhnliches Angebot",
+      "exclusive_deal": "Exklusiv-Angebot",
+      "delivery": "KOSTENLOSE Lieferung",
+      "delivery_time": "bis morgen",
+      "deal_tag": "Angebot"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "Unverbindliche Preisempfehlung:"
+    },
+    "result": {
+      "deal_unlocked": "Sonderangebot freigeschaltet!",
+      "get": "Holen Sie sich",
+      "for": "jetzt für nur",
+      "exclusive": "Exklusives Angebot",
+      "limited": "Zeitlich begrenztes Angebot - Jetzt bestellen"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Blitzverkauf",
+    "badge": "Zeitlich Begrenztes Angebot",
+    "verified_seller": "Verifizierter Verkäufer",
+    "deal_tag": "SALE",
+    "list_price": "Regulärer Preis:",
+    "shipping": "Schneller & Sicherer Versand",
+    "delivery": "Express-Lieferung",
+    "delivery_time": "2-5 Werktage",
+    "product": {
+      "verified": "Verifiziert",
+      "list_price": "Regulärer Preis:"
+    },
+    "result": {
+      "deal_unlocked": "Blitzangebot freigeschaltet!",
+      "get": "Holen Sie sich",
+      "for": "jetzt für nur",
+      "exclusive": "Exklusives Shop-Angebot.",
+      "limited": "Zeitlich begrenztes Angebot - Jetzt kaufen"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Tagesangebote",
+    "badge": "Angebot des Tages",
+    "deal_badge": "Tagesangebot",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "ANGEBOT",
+    "list_price": "Vorher:",
+    "shipping": "Schneller & Kostenloser Versand",
+    "delivery": "Express-Lieferung",
+    "delivery_time": "30 Tage Rückgaberecht",
+    "fast_shipping": "Express-Versand",
+    "product": {
+      "top_rated": "Top Rated Plus Verkäufer",
+      "list_price": "Vorher:"
+    },
+    "result": {
+      "deal_unlocked": "Angebot freigeschaltet!",
+      "get": "Holen Sie sich",
+      "for": "jetzt für nur",
+      "exclusive": "Exklusives eBay-Angebot.",
+      "limited": "Zeitlich begrenztes Angebot - Jetzt kaufen"
+    }
+  }
+} 

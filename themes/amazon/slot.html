@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title data-i18n="amazon.prime.exclusive_deal"></title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="translations/translations.js"></script>
+<style>
+  .prime-badge {
+    background: linear-gradient(135deg, #00A8E1 0%, #0077C2 100%);
+  }
+  .amazon-button {
+    background: linear-gradient(to bottom, #f8e3ad 0%, #EEBA37 100%);
+    border-color: #c89411;
+  }
+  .amazon-button:hover {
+    background: linear-gradient(to bottom, #f5d78e 0%, #eeb933 100%);
+  }
+  .slot {
+    background: #232F3E;
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body class="bg-white text-gray-900 font-sans relative">
+
+<div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+  <!-- Amazon Logo -->
+  <div class="mb-6">
+    <svg class="w-24 h-8" viewBox="0 0 602 124" xmlns="http://www.w3.org/2000/svg">
+      <path d="M374.006,104.468c-35,25.797-85.729,39.561-129.406,39.561c-61.242,0-116.376-22.651-158.087-60.325c-3.278-2.962-0.341-7,3.591-4.693c45.015,26.191,100.673,41.947,158.166,41.947c38.775,0,81.43-8.022,120.65-24.67C374.941,93.831,380.931,99.438,374.006,104.468z" fill="#FF9900"/>
+      <path d="M388.557,88.309c-4.457-5.715-29.573-2.7-40.846-1.363c-3.434,0.419-3.959-2.569-0.868-4.719c20.003-14.078,52.827-10.015,56.654-5.296c3.828,4.745-0.991,37.648-19.791,53.352c-2.888,2.411-5.628,1.127-4.352-2.072C384.834,115.810,393.013,94.023,388.557,88.309z" fill="#FF9900"/>
+    </svg>
+  </div>
+
+  <!-- Headline & Prime Badge -->
+  <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-2" data-i18n="amazon.prime.exclusive_deal"></h1>
+  <div class="prime-badge text-white px-4 py-1 rounded-full text-sm font-bold mb-6" data-i18n="amazon.prime.badge"></div>
+
+  <!-- Product Details -->
+  <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6 text-center border border-gray-200">
+    <!-- Product Image -->
+    <div class="mb-6">
+      <img src="{PRODUCT_IMAGE}" alt="Product Image" class="w-full h-auto object-cover rounded-md">
+    </div>
+
+    <!-- Product & Brand Name -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-2" id="productName">{PRODUCT_NAME}</h2>
+
+    <!-- Amazon Choice Badge -->
+    <div class="bg-gray-900 text-white inline-block px-3 py-1 rounded text-sm font-semibold mb-4">
+      Amazon's <span class="text-yellow-400" data-i18n="amazon.product.amazon_choice"></span>
+    </div>
+
+    <!-- Pricing -->
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <span class="text-red-600 font-bold text-sm" data-i18n="amazon.prime.deal_tag"></span>
+      <span class="text-3xl font-bold text-gray-900" id="productPrice">{PRODUCT_PRICE}</span>
+      <span class="text-sm text-gray-500">
+        <span data-i18n="amazon.product.list_price"></span> <span class="line-through" id="productRetailPrice">{PRODUCT_RETAIL_PRICE}</span>
+      </span>
+    </div>
+
+    <!-- Prime Delivery -->
+    <p class="text-sm text-gray-700 mb-4">
+      <span class="text-[#00A8E1] font-bold" data-i18n="amazon.prime.delivery"></span> <span data-i18n="amazon.prime.delivery_time"></span>
+    </p>
+
+    <!-- Call to Action -->
+    <button id="openGame" class="amazon-button w-full text-center text-gray-900 font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.main"></button>
+  </div>
+</div>
+
+<!-- Overlay for the Mini-Game -->
+<div id="gameOverlay" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center px-4 hidden">
+  <div class="max-w-md w-full">
+    <!-- Game Content Container -->
+    <div id="gameContent" class="bg-white rounded-lg p-6 text-center">
+      <h2 class="text-xl text-gray-900 font-bold mb-4" data-i18n="games.slot.title"></h2>
+      <p class="text-sm text-gray-600 mb-6" data-i18n="games.slot.description"></p>
+
+      <!-- Slot Machine -->
+      <div class="flex justify-center space-x-4 mb-6">
+        <div class="slot cursor-pointer" data-slot="1">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0ZGOTkwMCI+PHBhdGggZD0iTTIwIDhINGEyIDIgMCAwMC0yIDJ2MTBhMiAyIDAgMDAyIDJoMTZhMiAyIDAgMDAyLTJWMTBhMiAyIDAgMDAtMi0yek0yIDZoMjBhMiAyIDAgMDAyLTJWMmEyIDIgMCAwMC0yLTJIMmEyIDIgMCAwMC0yIDJ2MmEyIDIgMCAwMDIgMnoiLz48L3N2Zz4=" class="w-8 h-8" alt="Prime Box">
+        </div>
+        <div class="slot cursor-pointer" data-slot="2">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0ZGOTkwMCI+PHBhdGggZD0iTTIwIDhINGEyIDIgMCAwMC0yIDJ2MTBhMiAyIDAgMDAyIDJoMTZhMiAyIDAgMDAyLTJWMTBhMiAyIDAgMDAtMi0yek0yIDZoMjBhMiAyIDAgMDAyLTJWMmEyIDIgMCAwMC0yLTJIMmEyIDIgMCAwMC0yIDJ2MmEyIDIgMCAwMDIgMnoiLz48L3N2Zz4=" class="w-8 h-8" alt="Prime Box">
+        </div>
+        <div class="slot cursor-pointer" data-slot="3">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0ZGOTkwMCI+PHBhdGggZD0iTTIwIDhINGEyIDIgMCAwMC0yIDJ2MTBhMiAyIDAgMDAyIDJoMTZhMiAyIDAgMDAyLTJWMTBhMiAyIDAgMDAtMi0yek0yIDZoMjBhMiAyIDAgMDAyLTJWMmEyIDIgMCAwMC0yLTJIMmEyIDIgMCAwMC0yIDJ2MmEyIDIgMCAwMDIgMnoiLz48L3N2Zz4=" class="w-8 h-8" alt="Prime Box">
+        </div>
+      </div>
+
+      <button id="spinButton" class="amazon-button w-full text-center text-gray-900 font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="games.slot.button"></button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="resultSection" class="bg-white rounded-lg p-6 text-center hidden">
+      <img src="{PRODUCT_IMAGE}" alt="Product Found" class="w-full h-auto object-cover rounded-md mb-4">
+      <div class="bg-[#232F3E] text-white p-4 rounded-lg mb-4">
+        <p class="text-sm mb-2">
+          <span data-i18n="amazon.result.deal_unlocked"></span> 
+          <span data-i18n="amazon.result.get"></span> 
+          <span id="resultProductName">{PRODUCT_NAME}</span> 
+          <span data-i18n="amazon.result.for"></span> 
+          <span id="resultProductPrice">{PRODUCT_PRICE}</span>. 
+          <span data-i18n="amazon.result.exclusive"></span>
+        </p>
+        <p class="text-xs text-gray-300" data-i18n="amazon.result.limited"></p>
+      </div>
+      <a href="{CHECKOUT_LINK}" class="amazon-button inline-block w-full text-gray-900 font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.final"></a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

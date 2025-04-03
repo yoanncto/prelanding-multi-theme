@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title  ">Offer Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="translations/translations.js"></script>
+    <script src="js/currency-formatter.js"></script>
+    <script src="themes/theme-manager.js"></script>
+    <style>
+        /* Common styles for all themes */
+        .prime-badge {
+            background: linear-gradient(135deg, #00A8E1 0%, #0077C2 100%);
+        }
+        
+        .amazon-button {
+            background: linear-gradient(to bottom, #f8e3ad 0%, #EEBA37 100%);
+            border-color: #c89411;
+        }
+        .amazon-button:hover {
+            background: linear-gradient(to bottom, #f5d78e 0%, #eeb933 100%);
+        }
+        
+        .ebay-button {
+            background: #0063D1;
+        }
+        .ebay-button:hover {
+            background: #004998;
+        }
+        
+        .shopify-button {
+            background: linear-gradient(to bottom, #008060 0%, #004C3F 100%);
+        }
+        .shopify-button:hover {
+            background: linear-gradient(to bottom, #004C3F 0%, #002E25 100%);
+        }
+
+        /* Animation styles */
+        .fade-out {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: scale(0.95);
+            animation: fadeIn 0.3s ease forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Improved result section animations */
+        #resultSection {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #resultSection.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Improved scratch game animations */
+        .reveal-cover {
+            background: linear-gradient(135deg, #232F3E 30%, #37475A 100%);
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+        .reveal-cover:hover {
+            background: linear-gradient(135deg, #37475A 30%, #232F3E 100%);
+        }
+        .reveal-cover.revealed {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .reveal-cover .content {
+            transition: all 0.3s ease;
+        }
+        .reveal-cover:hover .content {
+            transform: scale(1.05);
+        }
+        
+        /* Game content animations */
+        #gameContent {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #gameContent.fade-out {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        
+        /* Game overlay animations */
+        #gameOverlay {
+            transition: opacity 0.3s ease;
+        }
+        #gameOverlay.fade-in {
+            animation: overlayFadeIn 0.3s ease forwards;
+        }
+        @keyframes overlayFadeIn {
+            from {
+                opacity: 0;
+                backdrop-filter: blur(0);
+            }
+            to {
+                opacity: 1;
+                backdrop-filter: blur(4px);
+            }
+        }
+
+        /* Game-specific styles */
+        .slot-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .slot {
+            background: #232F3E;
+            width: 60px;
+            height: 60px;
+            border-radius: 0.5rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .spinning {
+            animation: spin 0.6s infinite linear;
+        }
+        @keyframes spin {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-10px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .box {
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .box:hover {
+            transform: scale(1.05);
+            background-color: #37475A;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+    <div id="content"></div>
+
+    <script>
+        console.log('Index script starting');
+        
+        function getUrlParameters() {
+            const params = new URLSearchParams(window.location.search);
+            const offerUrl = params.get('checkoutLink')
+
+            const parameters = {
+                price: params.get('price') || '29.99',
+                retailPrice: params.get('retailPrice') || '99.99',
+                productName: params.get('productName') || 'Product Name',
+                productImage: params.get('productImage') || '/assets/placeholder.jpg',
+                theme: params.get('theme') || 'amazon',
+                game: params.get('game') || 'box',
+                checkoutLink: offerUrl,
+                px: params.get('px') || ''
+            };
+            console.log('URL parameters parsed:', parameters);
+            return parameters;
+        }
+
+        async function initPage() {
+            try {
+                console.log('Initializing page');
+                
+                // Store parameters before cleaning URL
+                const productParams = getUrlParameters();
+                console.log('Product parameters:', productParams);
+
+                // Store the original pathname for base path
+                const originalPathname = window.location.pathname;
+                const basePath = originalPathname.substring(0, originalPathname.lastIndexOf('/') + 1);
+                
+                // Clean URL to show only root domain but maintain internal base path
+                const currentUrl = new URL(window.location.href);
+                window.history.replaceState(
+                    { basePath: basePath }, 
+                    document.title, 
+                    currentUrl.origin
+                );
+
+                // Set base tag to maintain relative paths
+                const baseTag = document.createElement('base');
+                baseTag.href = currentUrl.origin + basePath;
+                document.head.prepend(baseTag);
+                // Dynamically set the favicon based on the theme
+                const faviconLink = document.createElement('link');
+                faviconLink.rel = 'icon';
+                // Construct the favicon path based on the theme
+                faviconLink.href = `assets/${productParams.theme}favicon.ico`; 
+                faviconLink.type = 'image/x-icon';
+                document.head.appendChild(faviconLink);
+                console.log('Favicon set to:', faviconLink.href);
+                // Wait for translations to be ready
+                if (window.i18n && !window.i18n.translations) {
+                    console.log('Waiting for translations');
+                    await new Promise(resolve => {
+                        const checkTranslations = () => {
+                            if (window.i18n.translations) {
+                                console.log('Translations loaded');
+                                resolve();
+                            } else {
+                                setTimeout(checkTranslations, 50);
+                            }
+                        };
+                        checkTranslations();
+                    });
+                }
+
+                // Load the template based on the current theme and game type
+                const template = await window.themeManager.loadTemplate(productParams);
+                if (template) {
+                    console.log('Template loaded, length:', template.length);
+                    const content = document.getElementById('content');
+                    content.innerHTML = template;
+                    console.log('Template inserted into DOM');
+
+                    // Replace placeholders with actual values
+                    replacePlaceholders(productParams);
+
+                    // Initialize game-specific scripts
+                    initializeGameScripts(productParams.game);
+                    console.log('Game scripts initialized');
+                    
+                    // Apply translations
+                    if (window.i18n) {
+                        console.log('Applying translations');
+                        window.i18n.updatePageTranslations();
+                    }
+                } else {
+                    console.error('Template failed to load');
+                }
+            } catch (error) {
+                console.error('Error initializing page:', error);
+            }
+        }
+
+        function replacePlaceholders(params) {
+            document.querySelectorAll('[id="productName"], [id="resultProductName"]').forEach(el => el.textContent = params.productName);
+            document.querySelectorAll('[id="productPrice"], [id="resultProductPrice"]').forEach(el => el.textContent = window.currencyFormatter.format(params.price));
+            document.querySelectorAll('[id="productRetailPrice"]').forEach(el => el.textContent = window.currencyFormatter.format(params.retailPrice));
+            document.querySelectorAll('img[src="{PRODUCT_IMAGE}"]').forEach(el => el.src = params.productImage);
+            document.querySelectorAll('a[href="{CHECKOUT_LINK}"]').forEach(el => el.href = offerUrl);
+        }
+
+        function initializeGameScripts(gameType) {
+            // Common elements
+            const openGameBtn = document.getElementById('openGame');
+            const gameOverlay = document.getElementById('gameOverlay');
+            const resultSection = document.getElementById('resultSection');
+            
+            if (openGameBtn && gameOverlay) {
+                openGameBtn.addEventListener('click', () => {
+                    gameOverlay.classList.remove('hidden');
+                    gameOverlay.classList.add('fade-in');
+                });
+            }
+
+            switch(gameType) {
+                case 'slot':
+                    initSlotGame();
+                    break;
+                case 'box':
+                    initBoxGame();
+                    break;
+                case 'scratch':
+                    initScratchGame();
+                    break;
+            }
+        }
+
+        function initSlotGame() {
+            const spinButton = document.getElementById('spinButton');
+            const slotElements = document.querySelectorAll('.slot');
+            const resultSection = document.getElementById('resultSection');
+            const gameContent = document.getElementById('gameContent');
+
+            if (spinButton && slotElements.length && resultSection && gameContent) {
+                spinButton.addEventListener('click', () => {
+                    spinButton.disabled = true;
+                    spinButton.setAttribute('data-i18n', 'games.slot.spinning');
+                    window.i18n?.updatePageTranslations();
+                    
+                    slotElements.forEach(slot => {
+                        slot.classList.add('spinning');
+                    });
+
+                    setTimeout(() => {
+                        slotElements.forEach(slot => {
+                            slot.classList.remove('spinning');
+                        });
+                        
+                        gameContent.classList.add('fade-out');
+                        
+                        setTimeout(() => {
+                            gameContent.remove();
+                            resultSection.classList.remove('hidden');
+                            setTimeout(() => {
+                                resultSection.classList.add('visible');
+                            }, 50);
+                        }, 300);
+                    }, 2000);
+                });
+            }
+        }
+
+        function initBoxGame() {
+            const boxes = document.querySelectorAll('.box');
+            const gameContent = document.getElementById('gameContent');
+            const resultSection = document.getElementById('resultSection');
+
+            if (boxes.length && gameContent && resultSection) {
+                boxes.forEach(box => {
+                    box.addEventListener('click', () => {
+                        gameContent.classList.add('fade-out');
+                        
+                        setTimeout(() => {
+                            gameContent.remove();
+                            resultSection.classList.remove('hidden');
+                            setTimeout(() => {
+                                resultSection.classList.add('visible');
+                            }, 50);
+                        }, 300);
+                    });
+                });
+            }
+        }
+
+        function initScratchGame() {
+            const revealCover = document.getElementById('revealCover');
+            const gameContent = document.getElementById('gameContent');
+            const resultSection = document.getElementById('resultSection');
+
+            if (revealCover && gameContent && resultSection) {
+                let isAnimating = false;
+
+                revealCover.addEventListener('click', () => {
+                    if (isAnimating) return;
+                    isAnimating = true;
+                    
+                    console.log('Scratch reveal clicked');
+                    revealCover.classList.add('revealed');
+                    
+                    setTimeout(() => {
+                        gameContent.classList.add('fade-out');
+                        
+                        setTimeout(() => {
+                            gameContent.remove();
+                            resultSection.classList.remove('hidden');
+                            resultSection.classList.add('visible');
+                            isAnimating = false;
+                        }, 300);
+                    }, 300);
+                });
+            }
+        }
+
+        // Initialize the page when everything is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
+    </script>
+</body>
+</html> 

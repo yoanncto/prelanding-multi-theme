@@ -1,0 +1,98 @@
+{
+  "title": "Velký Výprodej",
+  "urgency": "Flash Prodej • Velmi Omezený Čas",
+  "product": {
+    "name": "Luxura™ Smartwatch",
+    "description": "Prémiové chytré hodinky s pokročilými funkcemi.",
+    "price": {
+      "original": "59,99€",
+      "discounted": "1,99€"
+    }
+  },
+  "cta": {
+    "main": "Přidat do Košíku",
+    "final": "Koupit Nyní"
+  },
+  "games": {
+    "box": {
+      "title": "Vyberte Svou Šťastnou Krabičku",
+      "description": "Vyberte krabičku a odkryjte svou exkluzivní nabídku.",
+      "result": "Gratulujeme! Odemkli jste exkluzivní nabídku"
+    },
+    "slot": {
+      "title": "Automat Štěstí",
+      "description": "Zatočte a odemkněte svou exkluzivní nabídku!",
+      "button": "Zatočit Nyní",
+      "spinning": "Točí se..."
+    },
+    "scratch": {
+      "title": "Mystery Nabídka",
+      "description": "Klikněte pro odhalení své exkluzivní nabídky!",
+      "instruction": "Klikněte pro Odhalení"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Výjimečná Nabídka",
+      "exclusive_deal": "Exkluzivní Nabídka",
+      "delivery": "Doručení ZDARMA",
+      "delivery_time": "do zítřka",
+      "deal_tag": "Nabídka"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "Doporučená cena:"
+    },
+    "result": {
+      "deal_unlocked": "Speciální nabídka odemčena!",
+      "get": "Získejte",
+      "for": "nyní pouze za",
+      "exclusive": "Exkluzivní nabídka",
+      "limited": "Časově omezená nabídka - Objednejte nyní"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Flash Prodej",
+    "badge": "Časově Omezená Nabídka",
+    "verified_seller": "Ověřený Prodejce",
+    "deal_tag": "AKCE",
+    "list_price": "Běžná cena:",
+    "shipping": "Rychlé a Bezpečné Doručení",
+    "delivery": "Expresní Doručení",
+    "delivery_time": "2-5 Pracovních Dnů",
+    "product": {
+      "verified": "Ověřený",
+      "list_price": "Běžná cena:"
+    },
+    "result": {
+      "deal_unlocked": "Flash nabídka odemčena!",
+      "get": "Získejte",
+      "for": "nyní pouze za",
+      "exclusive": "Exkluzivní nabídka obchodu.",
+      "limited": "Časově omezená nabídka - Kupte nyní"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Denní Nabídky",
+    "badge": "Nabídka Dne",
+    "deal_badge": "Speciální Nabídka Dne",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "AKCE",
+    "list_price": "Původně:",
+    "shipping": "Rychlé a Bezplatné Doručení",
+    "delivery": "Expresní Doručení",
+    "delivery_time": "30denní právo na vrácení",
+    "fast_shipping": "Expresní Doručení",
+    "product": {
+      "top_rated": "Top Rated Plus Prodejce",
+      "list_price": "Původně:"
+    },
+    "result": {
+      "deal_unlocked": "Nabídka odemčena!",
+      "get": "Získejte",
+      "for": "nyní pouze za",
+      "exclusive": "Exkluzivní eBay nabídka.",
+      "limited": "Časově omezená nabídka - Kupte nyní"
+    }
+  }
+} 

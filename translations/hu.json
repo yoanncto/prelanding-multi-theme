@@ -1,0 +1,98 @@
+{
+  "title": "Nagy Kiárusítás",
+  "urgency": "Villámakció • Nagyon Korlátozott Ideig",
+  "product": {
+    "name": "Luxura™ Smartwatch",
+    "description": "Prémium okosóra fejlett funkciókkal.",
+    "price": {
+      "original": "59,99€",
+      "discounted": "1,99€"
+    }
+  },
+  "cta": {
+    "main": "Kosárba Tesz",
+    "final": "Vásárlás Most"
+  },
+  "games": {
+    "box": {
+      "title": "Válaszd Ki a Szerencsedobozod",
+      "description": "Válassz egy dobozt a kizárólagos ajánlatod felfedéséhez.",
+      "result": "Gratulálunk! Feloldottál egy exkluzív ajánlatot"
+    },
+    "slot": {
+      "title": "Szerencsegép",
+      "description": "Pörgesd meg a gépet a speciális ajánlatod felfedezéséhez!",
+      "button": "Pörgetés",
+      "spinning": "Pörög..."
+    },
+    "scratch": {
+      "title": "Kaparós Kártya",
+      "description": "Kapard le a speciális ajánlatod felfedezéséhez!",
+      "instruction": "Érintsd meg a Felfedéshez"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Kivételes Ajánlat",
+      "exclusive_deal": "Exkluzív Ajánlat",
+      "delivery": "INGYENES Kézbesítés",
+      "delivery_time": "holnapra",
+      "deal_tag": "Ajánlat"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "Ajánlott ár:"
+    },
+    "result": {
+      "deal_unlocked": "Különleges ajánlat feloldva!",
+      "get": "Szerezd meg",
+      "for": "most mindössze",
+      "exclusive": "Exkluzív ajánlat",
+      "limited": "Időben korlátozott ajánlat - Rendelj most"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Villámakció",
+    "badge": "Időben Korlátozott Ajánlat",
+    "verified_seller": "Ellenőrzött Eladó",
+    "deal_tag": "AKCIÓ",
+    "list_price": "Normál ár:",
+    "shipping": "Gyors & Biztonságos Kézbesítés",
+    "delivery": "Expressz Kézbesítés",
+    "delivery_time": "2-5 Munkanap",
+    "product": {
+      "verified": "Ellenőrzött",
+      "list_price": "Normál ár:"
+    },
+    "result": {
+      "deal_unlocked": "Villámakció feloldva!",
+      "get": "Szerezd meg",
+      "for": "most mindössze",
+      "exclusive": "Exkluzív bolti ajánlat.",
+      "limited": "Időben korlátozott ajánlat - Vásárolj most"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Napi Ajánlatok",
+    "badge": "Napi Ajánlat",
+    "deal_badge": "Különleges Napi Ajánlat",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "AKCIÓ",
+    "list_price": "Volt:",
+    "shipping": "Gyors & Ingyenes Kézbesítés",
+    "delivery": "Expressz Kézbesítés",
+    "delivery_time": "30 Napos Visszaküldés",
+    "fast_shipping": "Expressz Kézbesítés",
+    "product": {
+      "top_rated": "Top Rated Plus Eladó",
+      "list_price": "Volt:"
+    },
+    "result": {
+      "deal_unlocked": "Ajánlat feloldva!",
+      "get": "Szerezd meg",
+      "for": "most mindössze",
+      "exclusive": "Exkluzív eBay-ajánlat.",
+      "limited": "Időben korlátozott ajánlat - Vásárolj most"
+    }
+  }
+} 

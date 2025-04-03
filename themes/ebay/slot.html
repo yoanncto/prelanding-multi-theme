@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title data-i18n="ebay.exclusive_deal"></title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="translations/translations.js"></script>
+<style>
+  .ebay-badge {
+    background: linear-gradient(135deg, #0063D1 0%, #004998 100%);
+  }
+  .ebay-button {
+    background: #0063D1;
+  }
+  .ebay-button:hover {
+    background: #004998;
+  }
+  .slot {
+    background: #F5F5F5;
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  .spinning {
+    animation: spin 0.6s infinite linear;
+  }
+  @keyframes spin {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+  }
+</style>
+</head>
+<body class="bg-white text-gray-900 font-sans relative">
+
+<div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+  <!-- eBay Logo -->
+  <div class="mb-6">
+    <svg class="w-24 h-8" viewBox="0 0 124 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.75684 14.252H0V28.8601H7.75684C11.1094 28.8601 13.7129 26.7939 13.7129 21.7197C13.7129 16.5674 11.1094 14.252 7.75684 14.252Z" fill="#E53238"/>
+      <path d="M38.3789 14.252H30.6221V28.8601H38.3789C41.7314 28.8601 44.335 26.7939 44.335 21.7197C44.335 16.5674 41.7314 14.252 38.3789 14.252Z" fill="#0064D2"/>
+      <path d="M69.001 14.252H61.2441V28.8601H69.001C72.3535 28.8601 74.957 26.7939 74.957 21.7197C74.957 16.5674 72.3535 14.252 69.001 14.252Z" fill="#F5AF02"/>
+      <path d="M99.6231 14.252H91.8662V28.8601H99.6231C102.976 28.8601 105.579 26.7939 105.579 21.7197C105.579 16.5674 102.976 14.252 99.6231 14.252Z" fill="#86B817"/>
+    </svg>
+  </div>
+
+  <!-- Headline & eBay Badge -->
+  <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-2" data-i18n="ebay.exclusive_deal"></h1>
+  <div class="ebay-badge text-white px-4 py-1 rounded-full text-sm font-bold mb-6" data-i18n="ebay.badge"></div>
+
+  <!-- Product Details -->
+  <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6 text-center border border-gray-200">
+    <!-- Product Image -->
+    <div class="mb-6">
+      <img src="{PRODUCT_IMAGE}" alt="Product Image" class="w-full h-auto object-cover rounded-md">
+    </div>
+
+    <!-- Product & Brand Name -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-2" id="productName">{PRODUCT_NAME}</h2>
+
+    <!-- eBay Choice Badge -->
+    <div class="bg-[#0063D1] text-white inline-block px-3 py-1 rounded text-sm font-semibold mb-4">
+      eBay's <span class="text-yellow-400" data-i18n="ebay.product.top_rated"></span>
+    </div>
+
+    <!-- Pricing -->
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <span class="text-red-600 font-bold text-sm" data-i18n="ebay.deal_tag"></span>
+      <span class="text-3xl font-bold text-gray-900" id="productPrice">{PRODUCT_PRICE}</span>
+      <span class="text-sm text-gray-500">
+        <span data-i18n="ebay.product.list_price"></span> <span class="line-through" id="productRetailPrice">{PRODUCT_RETAIL_PRICE}</span>
+      </span>
+    </div>
+
+    <!-- Shipping Info -->
+    <p class="text-sm text-gray-700 mb-4">
+      <span class="text-[#0063D1] font-bold" data-i18n="ebay.delivery"></span> <span data-i18n="ebay.delivery_time"></span>
+    </p>
+
+    <!-- Call to Action -->
+    <button id="openGame" class="ebay-button w-full text-center text-white font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.main"></button>
+  </div>
+</div>
+
+<!-- Overlay for the Mini-Game -->
+<div id="gameOverlay" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center px-4 hidden">
+  <div class="max-w-md w-full">
+    <!-- Game Content Container -->
+    <div id="gameContent" class="bg-white rounded-lg p-6 text-center">
+      <h2 class="text-xl text-gray-900 font-bold mb-4" data-i18n="games.slot.title"></h2>
+      <p class="text-sm text-gray-600 mb-6" data-i18n="games.slot.description"></p>
+
+      <!-- Slot Machine -->
+      <div class="flex justify-center space-x-4 mb-6">
+        <div class="slot cursor-pointer" data-slot="1">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNjNEMSI+PHBhdGggZD0iTTkuMDQ5IDIuOTI3Yy4zLS45MjEgMS42MDMtLjkyMSAxLjkwMiAwbDEuMDcgMy4yOTJhMSAxIDAgMDAuOTUuNjloMy40NjJjLjk2OSAwIDEuMzcxIDEuMjQuNTg4IDEuODFsLTIuOCAyLjAzNGExIDEgMCAwMC0uMzY0IDEuMTE4bDEuMDcgMy4yOTJjLjMuOTIxLS43NTUgMS42ODgtMS41NCAxLjExOGwtMi44LTIuMDM0YTEgMSAwIDAwLTEuMTc1IDBsLTIuOCAyLjAzNGMtLjc4NC41Ny0xLjgzOC0uMTk3LTEuNTM5LTEuMTE4bDEuMDctMy4yOTJhMSAxIDAgMDAtLjM2NC0xLjExOEwyLjk4IDguNzJjLS43ODMtLjU3LS4zOC0xLjgxLjU4OC0xLjgxaDMuNDYxYTEgMSAwIDAwLjk1MS0uNjlsMS4wNy0zLjI5MnoiLz48L3N2Zz4=" class="w-8 h-8" alt="eBay Box">
+        </div>
+        <div class="slot cursor-pointer" data-slot="2">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNjNEMSI+PHBhdGggZD0iTTkuMDQ5IDIuOTI3Yy4zLS45MjEgMS42MDMtLjkyMSAxLjkwMiAwbDEuMDcgMy4yOTJhMSAxIDAgMDAuOTUuNjloMy40NjJjLjk2OSAwIDEuMzcxIDEuMjQuNTg4IDEuODFsLTIuOCAyLjAzNGExIDEgMCAwMC0uMzY0IDEuMTE4bDEuMDcgMy4yOTJjLjMuOTIxLS43NTUgMS42ODgtMS41NCAxLjExOGwtMi44LTIuMDM0YTEgMSAwIDAwLTEuMTc1IDBsLTIuOCAyLjAzNGMtLjc4NC41Ny0xLjgzOC0uMTk3LTEuNTM5LTEuMTE4bDEuMDctMy4yOTJhMSAxIDAgMDAtLjM2NC0xLjExOEwyLjk4IDguNzJjLS43ODMtLjU3LS4zOC0xLjgxLjU4OC0xLjgxaDMuNDYxYTEgMSAwIDAwLjk1MS0uNjlsMS4wNy0zLjI5MnoiLz48L3N2Zz4=" class="w-8 h-8" alt="eBay Box">
+        </div>
+        <div class="slot cursor-pointer" data-slot="3">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwNjNEMSI+PHBhdGggZD0iTTkuMDQ5IDIuOTI3Yy4zLS45MjEgMS42MDMtLjkyMSAxLjkwMiAwbDEuMDcgMy4yOTJhMSAxIDAgMDAuOTUuNjloMy40NjJjLjk2OSAwIDEuMzcxIDEuMjQuNTg4IDEuODFsLTIuOCAyLjAzNGExIDEgMCAwMC0uMzY0IDEuMTE4bDEuMDcgMy4yOTJjLjMuOTIxLS43NTUgMS42ODgtMS41NCAxLjExOGwtMi44LTIuMDM0YTEgMSAwIDAwLTEuMTc1IDBsLTIuOCAyLjAzNGMtLjc4NC41Ny0xLjgzOC0uMTk3LTEuNTM5LTEuMTE4bDEuMDctMy4yOTJhMSAxIDAgMDAtLjM2NC0xLjExOEwyLjk4IDguNzJjLS43ODMtLjU3LS4zOC0xLjgxLjU4OC0xLjgxaDMuNDYxYTEgMSAwIDAwLjk1MS0uNjlsMS4wNy0zLjI5MnoiLz48L3N2Zz4=" class="w-8 h-8" alt="eBay Box">
+        </div>
+      </div>
+
+      <button id="spinButton" class="ebay-button w-full text-center text-white font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="games.slot.button"></button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="resultSection" class="bg-white rounded-lg p-6 text-center hidden">
+      <img src="{PRODUCT_IMAGE}" alt="Product Found" class="w-full h-auto object-cover rounded-md mb-4">
+      <div class="bg-[#0063D1] text-white p-4 rounded-lg mb-4">
+        <p class="text-sm mb-2">
+          <span data-i18n="ebay.result.deal_unlocked"></span> 
+          <span data-i18n="ebay.result.get"></span> 
+          <span id="resultProductName">{PRODUCT_NAME}</span> 
+          <span data-i18n="ebay.result.for"></span> 
+          <span id="resultProductPrice">{PRODUCT_PRICE}</span>. 
+          <span data-i18n="ebay.result.exclusive"></span>
+        </p>
+        <p class="text-xs text-gray-300" data-i18n="ebay.result.limited"></p>
+      </div>
+      <a href="{CHECKOUT_LINK}" class="ebay-button inline-block w-full text-white font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.final"></a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Add debug logs
+  console.log('eBay slot template loaded');
+  
+  const openGameBtn = document.getElementById('openGame');
+  const gameOverlay = document.getElementById('gameOverlay');
+  const spinButton = document.getElementById('spinButton');
+  const slotElements = document.querySelectorAll('.slot');
+  const resultSection = document.getElementById('resultSection');
+  const gameContent = document.getElementById('gameContent');
+
+  console.log('Elements found:', {
+    openGameBtn: !!openGameBtn,
+    gameOverlay: !!gameOverlay,
+    spinButton: !!spinButton,
+    slotElements: slotElements.length,
+    resultSection: !!resultSection,
+    gameContent: !!gameContent
+  });
+
+  openGameBtn.addEventListener('click', () => {
+    console.log('Game opened');
+    gameOverlay.classList.remove('hidden');
+  });
+
+  spinButton.addEventListener('click', () => {
+    console.log('Spin started');
+    // Disable spin button temporarily
+    spinButton.disabled = true;
+    spinButton.setAttribute('data-i18n', 'games.slot.spinning');
+    
+    // Update translations using the translation manager
+    if (window.i18n) {
+        window.i18n.updatePageTranslations();
+    }
+
+    // Apply spinning animation to slots
+    slotElements.forEach(slot => {
+      slot.classList.add('spinning');
+    });
+
+    // After a short delay, "reveal" the result
+    setTimeout(() => {
+      console.log('Spin completed');
+      // Stop spinning
+      slotElements.forEach(slot => {
+        slot.classList.remove('spinning');
+      });
+      
+      // Hide game content and show result
+      gameContent.classList.add('hidden');
+      resultSection.classList.remove('hidden');
+    }, 2000);
+  });
+</script>
+
+</body>
+</html> 

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title data-i18n="ebay.exclusive_deal"></title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="translations/translations.js"></script>
+<style>
+  .ebay-button {
+    background: #0063D1;
+  }
+  .ebay-button:hover {
+    background: #004998;
+  }
+  .deal-badge {
+    background: #FF0000;
+  }
+  .top-rated {
+    background: linear-gradient(135deg, #FFE11B 0%, #FFB300 100%);
+  }
+</style>
+</head>
+<body class="bg-[#F5F5F5] text-gray-900 font-sans relative">
+
+<div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+  <!-- eBay Logo -->
+  <div class="mb-6">
+    <svg class="w-24 h-8" viewBox="0 0 124 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7.75684 14.252H0V28.8601H7.75684C11.1094 28.8601 13.7129 26.7939 13.7129 21.7197C13.7129 16.5674 11.1094 14.252 7.75684 14.252Z" fill="#E53238"/>
+      <path d="M38.3789 14.252H30.6221V28.8601H38.3789C41.7314 28.8601 44.335 26.7939 44.335 21.7197C44.335 16.5674 41.7314 14.252 38.3789 14.252Z" fill="#0064D2"/>
+      <path d="M69.001 14.252H61.2441V28.8601H69.001C72.3535 28.8601 74.957 26.7939 74.957 21.7197C74.957 16.5674 72.3535 14.252 69.001 14.252Z" fill="#F5AF02"/>
+      <path d="M99.6231 14.252H91.8662V28.8601H99.6231C102.976 28.8601 105.579 26.7939 105.579 21.7197C105.579 16.5674 102.976 14.252 99.6231 14.252Z" fill="#86B817"/>
+    </svg>
+  </div>
+
+  <!-- Headline & Deal Badge -->
+  <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-2" data-i18n="ebay.exclusive_deal"></h1>
+  <div class="deal-badge text-white px-4 py-1 rounded-full text-sm font-bold mb-6" data-i18n="ebay.badge"></div>
+
+  <!-- Product Details -->
+  <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6 text-center">
+    <!-- Product Image -->
+    <div class="mb-6">
+      <img src="{PRODUCT_IMAGE}" alt="Product Image" class="w-full h-auto object-cover rounded-md">
+    </div>
+
+    <!-- Product & Brand Name -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-2" id="productName">{PRODUCT_NAME}</h2>
+
+    <!-- Top Rated Badge -->
+    <div class="top-rated text-gray-900 inline-block px-3 py-1 rounded text-sm font-semibold mb-4">
+      <span class="flex items-center">
+        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+        </svg>
+        <span data-i18n="ebay.top_rated"></span>
+      </span>
+    </div>
+
+    <!-- Pricing -->
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <span class="deal-badge text-white px-2 py-0.5 rounded text-sm font-bold" data-i18n="ebay.deal_tag"></span>
+      <span class="text-3xl font-bold text-gray-900" id="productPrice">{PRODUCT_PRICE}</span>
+      <span class="text-sm text-gray-500">
+        <span data-i18n="ebay.list_price"></span> <span class="line-through" id="productRetailPrice">{PRODUCT_RETAIL_PRICE}</span>
+      </span>
+    </div>
+
+    <!-- Shipping Info -->
+    <p class="text-sm text-gray-700 mb-4">
+      <span class="text-[#0063D1] font-bold" data-i18n="ebay.shipping"></span> <span data-i18n="ebay.delivery_time"></span>
+    </p>
+
+    <!-- Call to Action -->
+    <button id="openGame" class="ebay-button w-full text-center text-white font-bold text-lg py-3 rounded-md hover:bg-[#004998] transition" data-i18n="cta.main"></button>
+  </div>
+</div>
+
+<!-- Overlay for the Mini-Game -->
+<div id="gameOverlay" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center px-4 hidden">
+  <!-- Game Content Container -->
+  <div id="gameContent" class="max-w-md w-full bg-white rounded-lg p-6 text-center relative">
+    <h2 class="text-xl text-gray-900 font-bold mb-4" data-i18n="games.box.title"></h2>
+    <p class="text-sm text-gray-600 mb-6" data-i18n="games.box.description"></p>
+
+    <!-- Boxes -->
+    <div class="flex justify-between space-x-4">
+      <div class="box bg-white border-2 border-[#0063D1] w-1/3 h-32 rounded-md cursor-pointer flex items-center justify-center hover:bg-blue-50 transition" data-box="1">
+        <svg class="w-12 h-12 text-[#0063D1]" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M5 3a2 2 0 012-2h6a2 2 0 012 2v2h2a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V7a2 2 0 012-2h2V3zm4 2h2V3H9v2zM3 7v10h14V7H3zm4 3a1 1 0 011-1h4a1 1 0 110 2H8a1 1 0 01-1-1z"></path>
+        </svg>
+      </div>
+      <div class="box bg-white border-2 border-[#0063D1] w-1/3 h-32 rounded-md cursor-pointer flex items-center justify-center hover:bg-blue-50 transition" data-box="2">
+        <svg class="w-12 h-12 text-[#0063D1]" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M5 3a2 2 0 012-2h6a2 2 0 012 2v2h2a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V7a2 2 0 012-2h2V3zm4 2h2V3H9v2zM3 7v10h14V7H3zm4 3a1 1 0 011-1h4a1 1 0 110 2H8a1 1 0 01-1-1z"></path>
+        </svg>
+      </div>
+      <div class="box bg-white border-2 border-[#0063D1] w-1/3 h-32 rounded-md cursor-pointer flex items-center justify-center hover:bg-blue-50 transition" data-box="3">
+        <svg class="w-12 h-12 text-[#0063D1]" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M5 3a2 2 0 012-2h6a2 2 0 012 2v2h2a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V7a2 2 0 012-2h2V3zm4 2h2V3H9v2zM3 7v10h14V7H3zm4 3a1 1 0 011-1h4a1 1 0 110 2H8a1 1 0 01-1-1z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Section -->
+  <div id="resultSection" class="max-w-md w-full bg-white rounded-lg p-6 text-center relative hidden">
+    <img src="{PRODUCT_IMAGE}" alt="Product Found" class="w-full h-auto object-cover rounded-md mb-4">
+    <div class="bg-blue-50 border border-[#0063D1] p-4 rounded-lg mb-4">
+      <p class="text-sm mb-2">
+        <span data-i18n="ebay.result.deal_unlocked"></span> <span data-i18n="ebay.result.get"></span> <span id="resultProductName">{PRODUCT_NAME}</span> <span data-i18n="ebay.result.for"></span> <span id="resultProductPrice">{PRODUCT_PRICE}</span>. <span data-i18n="ebay.result.exclusive"></span>
+      </p>
+      <p class="text-xs text-gray-500" data-i18n="ebay.result.limited"></p>
+    </div>
+    <a href="{CHECKOUT_LINK}" class="ebay-button inline-block w-full text-center text-white font-bold text-lg py-3 rounded-md hover:bg-[#004998] transition" data-i18n="cta.final"></a>
+  </div>
+</div>
+
+</body>
+</html> 

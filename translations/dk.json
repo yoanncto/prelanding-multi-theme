@@ -1,0 +1,98 @@
+{
+  "title": "Stort Udsalg",
+  "urgency": "Flash Salg • Meget Begrænset Tid",
+  "product": {
+    "name": "Luxura™ Smartwatch",
+    "description": "Premium smartwatch med avancerede funktioner.",
+    "price": {
+      "original": "59,99€",
+      "discounted": "1,99€"
+    }
+  },
+  "cta": {
+    "main": "Læg i Kurv",
+    "final": "Køb Nu"
+  },
+  "games": {
+    "box": {
+      "title": "Vælg Din Lykkeæske",
+      "description": "Vælg en æske for at afsløre dit eksklusive tilbud.",
+      "result": "Tillykke! Du har låst op for et eksklusivt tilbud"
+    },
+    "slot": {
+      "title": "Lykkehjul",
+      "description": "Drej hjulet for at opdage dit særlige tilbud!",
+      "button": "Drej Nu",
+      "spinning": "Drejer..."
+    },
+    "scratch": {
+      "title": "Skrabekort",
+      "description": "Skrab for at opdage dit særlige tilbud!",
+      "instruction": "Tryk for at Afsløre"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Enestående Tilbud",
+      "exclusive_deal": "Eksklusivt Tilbud",
+      "delivery": "GRATIS Levering",
+      "delivery_time": "i morgen",
+      "deal_tag": "Tilbud"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "Vejledende pris:"
+    },
+    "result": {
+      "deal_unlocked": "Særligt tilbud låst op!",
+      "get": "Få",
+      "for": "nu for kun",
+      "exclusive": "Eksklusivt tilbud",
+      "limited": "Tidsbegrænset tilbud - Bestil nu"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Flash Salg",
+    "badge": "Tidsbegrænset Tilbud",
+    "verified_seller": "Verificeret Sælger",
+    "deal_tag": "SALG",
+    "list_price": "Normal pris:",
+    "shipping": "Hurtig & Sikker Levering",
+    "delivery": "Express Levering",
+    "delivery_time": "2-5 Hverdage",
+    "product": {
+      "verified": "Verificeret",
+      "list_price": "Normal pris:"
+    },
+    "result": {
+      "deal_unlocked": "Flash-tilbud låst op!",
+      "get": "Få",
+      "for": "nu for kun",
+      "exclusive": "Eksklusivt butikstilbud.",
+      "limited": "Tidsbegrænset tilbud - Køb nu"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Dagens Tilbud",
+    "badge": "Dagens Tilbud",
+    "deal_badge": "Særligt Dagens Tilbud",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "TILBUD",
+    "list_price": "Var:",
+    "shipping": "Hurtig & Gratis Levering",
+    "delivery": "Express Levering",
+    "delivery_time": "30 Dages Returret",
+    "fast_shipping": "Express Levering",
+    "product": {
+      "top_rated": "Top Rated Plus Sælger",
+      "list_price": "Var:"
+    },
+    "result": {
+      "deal_unlocked": "Tilbud låst op!",
+      "get": "Få",
+      "for": "nu for kun",
+      "exclusive": "Eksklusivt eBay-tilbud.",
+      "limited": "Tidsbegrænset tilbud - Køb nu"
+    }
+  }
+} 

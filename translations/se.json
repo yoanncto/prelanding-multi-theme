@@ -1,0 +1,98 @@
+{
+  "title": "Stor Rea",
+  "urgency": "Flash Rea • Mycket Begränsad Tid",
+  "product": {
+    "name": "Luxura™ Smartwatch",
+    "description": "Premium smartklocka med avancerade funktioner.",
+    "price": {
+      "original": "59,99€",
+      "discounted": "1,99€"
+    }
+  },
+  "cta": {
+    "main": "Lägg i Kundvagn",
+    "final": "Köp Nu"
+  },
+  "games": {
+    "box": {
+      "title": "Välj Din Lyckobox",
+      "description": "Välj en box för att avslöja ditt exklusiva erbjudande.",
+      "result": "Grattis! Du har låst upp ett exklusivt erbjudande"
+    },
+    "slot": {
+      "title": "Lyckomaskin",
+      "description": "Snurra maskinen för att upptäcka ditt specialerbjudande!",
+      "button": "Snurra",
+      "spinning": "Snurrar..."
+    },
+    "scratch": {
+      "title": "Skrapkort",
+      "description": "Skrapa för att upptäcka ditt specialerbjudande!",
+      "instruction": "Tryck för att Avslöja"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Enastående Erbjudande",
+      "exclusive_deal": "Exklusivt Erbjudande",
+      "delivery": "GRATIS Leverans",
+      "delivery_time": "imorgon",
+      "deal_tag": "Erbjudande"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "Rekommenderat pris:"
+    },
+    "result": {
+      "deal_unlocked": "Specialerbjudande upplåst!",
+      "get": "Få",
+      "for": "nu för endast",
+      "exclusive": "Exklusivt erbjudande",
+      "limited": "Tidsbegränsat erbjudande - Beställ nu"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Flash Rea",
+    "badge": "Tidsbegränsat Erbjudande",
+    "verified_seller": "Verifierad Säljare",
+    "deal_tag": "REA",
+    "list_price": "Ordinarie pris:",
+    "shipping": "Snabb & Säker Leverans",
+    "delivery": "Expressleverans",
+    "delivery_time": "2-5 Arbetsdagar",
+    "product": {
+      "verified": "Verifierad",
+      "list_price": "Ordinarie pris:"
+    },
+    "result": {
+      "deal_unlocked": "Flash-erbjudande upplåst!",
+      "get": "Få",
+      "for": "nu för endast",
+      "exclusive": "Exklusivt butikserbjudande.",
+      "limited": "Tidsbegränsat erbjudande - Köp nu"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Dagens Erbjudanden",
+    "badge": "Dagens Erbjudande",
+    "deal_badge": "Speciellt Dagens Erbjudande",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "REA",
+    "list_price": "Var:",
+    "shipping": "Snabb & Gratis Leverans",
+    "delivery": "Expressleverans",
+    "delivery_time": "30 Dagars Returrätt",
+    "fast_shipping": "Expressleverans",
+    "product": {
+      "top_rated": "Top Rated Plus Säljare",
+      "list_price": "Var:"
+    },
+    "result": {
+      "deal_unlocked": "Erbjudande upplåst!",
+      "get": "Få",
+      "for": "nu för endast",
+      "exclusive": "Exklusivt eBay-erbjudande.",
+      "limited": "Tidsbegränsat erbjudande - Köp nu"
+    }
+  }
+} 

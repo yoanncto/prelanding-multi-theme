@@ -1,0 +1,98 @@
+{
+  "title": "Grote Uitverkoop",
+  "urgency": "Flash Verkoop • Zeer Beperkte Tijd",
+  "product": {
+    "name": "Luxura™ Smartwatch",
+    "description": "Premium smartwatch met geavanceerde functies.",
+    "price": {
+      "original": "59,99€",
+      "discounted": "1,99€"
+    }
+  },
+  "cta": {
+    "main": "Toevoegen aan Winkelwagen",
+    "final": "Nu Kopen"
+  },
+  "games": {
+    "box": {
+      "title": "Kies Je Geluksbox",
+      "description": "Selecteer een box om je exclusieve aanbieding te onthullen.",
+      "result": "Gefeliciteerd! Je hebt een exclusieve aanbieding vrijgespeeld"
+    },
+    "slot": {
+      "title": "Geluksmachine",
+      "description": "Draai aan de machine om je speciale aanbieding te ontdekken!",
+      "button": "Draaien",
+      "spinning": "Draait..."
+    },
+    "scratch": {
+      "title": "Kraskaart",
+      "description": "Kras om je speciale aanbieding te ontdekken!",
+      "instruction": "Tik om te Onthullen"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Uitzonderlijke Aanbieding",
+      "exclusive_deal": "Exclusieve Aanbieding",
+      "delivery": "GRATIS Bezorging",
+      "delivery_time": "morgen in huis",
+      "deal_tag": "Aanbieding"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "Adviesprijs:"
+    },
+    "result": {
+      "deal_unlocked": "Speciale aanbieding vrijgespeeld!",
+      "get": "Krijg",
+      "for": "nu voor slechts",
+      "exclusive": "Exclusieve aanbieding",
+      "limited": "Tijdelijke aanbieding - Bestel nu"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Flash Verkoop",
+    "badge": "Tijdelijke Aanbieding",
+    "verified_seller": "Geverifieerde Verkoper",
+    "deal_tag": "SALE",
+    "list_price": "Normale prijs:",
+    "shipping": "Snelle & Veilige Verzending",
+    "delivery": "Expressverzending",
+    "delivery_time": "2-5 Werkdagen",
+    "product": {
+      "verified": "Geverifieerd",
+      "list_price": "Normale prijs:"
+    },
+    "result": {
+      "deal_unlocked": "Flash-aanbieding vrijgespeeld!",
+      "get": "Krijg",
+      "for": "nu voor slechts",
+      "exclusive": "Exclusieve winkelaanbieding.",
+      "limited": "Tijdelijke aanbieding - Koop nu"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Dagaanbiedingen",
+    "badge": "Dagaanbieding",
+    "deal_badge": "Speciale Dagaanbieding",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "AANBIEDING",
+    "list_price": "Was:",
+    "shipping": "Snelle & Gratis Verzending",
+    "delivery": "Expressverzending",
+    "delivery_time": "30 Dagen Retourrecht",
+    "fast_shipping": "Expressverzending",
+    "product": {
+      "top_rated": "Top Rated Plus Verkoper",
+      "list_price": "Was:"
+    },
+    "result": {
+      "deal_unlocked": "Aanbieding vrijgespeeld!",
+      "get": "Krijg",
+      "for": "nu voor slechts",
+      "exclusive": "Exclusieve eBay-aanbieding.",
+      "limited": "Tijdelijke aanbieding - Koop nu"
+    }
+  }
+} 

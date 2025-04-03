@@ -1,0 +1,98 @@
+{
+  "title": "Massiivinen Poistomyynti",
+  "urgency": "Pikamyynti • Erittäin Rajoitettu Aika",
+  "product": {
+    "name": "Luxura™ Älykello",
+    "description": "Premium-älykello edistyneillä ominaisuuksilla.",
+    "price": {
+      "original": "59,99€",
+      "discounted": "1,99€"
+    }
+  },
+  "cta": {
+    "main": "Lisää Ostoskoriin",
+    "final": "Osta Nyt"
+  },
+  "games": {
+    "box": {
+      "title": "Valitse Onnelaatikkosi",
+      "description": "Valitse laatikko paljastaaksesi eksklusiivisen tarjouksen.",
+      "result": "Onnittelut! Olet avannut eksklusiivisen tarjouksen"
+    },
+    "slot": {
+      "title": "Onnenkone",
+      "description": "Pyöräytä konetta löytääksesi erikoistarjouksesi!",
+      "button": "Pyöräytä",
+      "spinning": "Pyörii..."
+    },
+    "scratch": {
+      "title": "Raaputuskortti",
+      "description": "Raaputa paljastaaksesi erikoistarjouksesi!",
+      "instruction": "Kosketa Paljastaaksesi"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Poikkeuksellinen Tarjous",
+      "exclusive_deal": "Eksklusiivinen Tarjous",
+      "delivery": "ILMAINEN Toimitus",
+      "delivery_time": "huomiseksi",
+      "deal_tag": "Tarjous"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "Suositushinta:"
+    },
+    "result": {
+      "deal_unlocked": "Erikoistarjous avattu!",
+      "get": "Hanki",
+      "for": "nyt vain hintaan",
+      "exclusive": "Eksklusiivinen tarjous",
+      "limited": "Rajoitetun ajan tarjous - Tilaa nyt"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Pikamyynti",
+    "badge": "Rajoitetun Ajan Tarjous",
+    "verified_seller": "Vahvistettu Myyjä",
+    "deal_tag": "ALE",
+    "list_price": "Normaalihinta:",
+    "shipping": "Nopea & Turvallinen Toimitus",
+    "delivery": "Pikatoimitus",
+    "delivery_time": "2-5 Arkipäivää",
+    "product": {
+      "verified": "Vahvistettu",
+      "list_price": "Normaalihinta:"
+    },
+    "result": {
+      "deal_unlocked": "Pikatarjous avattu!",
+      "get": "Hanki",
+      "for": "nyt vain hintaan",
+      "exclusive": "Eksklusiivinen kauppatarjous.",
+      "limited": "Rajoitetun ajan tarjous - Osta nyt"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Päivän Tarjoukset",
+    "badge": "Päivän Tarjous",
+    "deal_badge": "Erikoistarjous Päivälle",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "TARJOUS",
+    "list_price": "Oli:",
+    "shipping": "Nopea & Ilmainen Toimitus",
+    "delivery": "Pikatoimitus",
+    "delivery_time": "30 Päivän Palautusoikeus",
+    "fast_shipping": "Pikatoimitus",
+    "product": {
+      "top_rated": "Top Rated Plus Myyjä",
+      "list_price": "Oli:"
+    },
+    "result": {
+      "deal_unlocked": "Tarjous avattu!",
+      "get": "Hanki",
+      "for": "nyt vain hintaan",
+      "exclusive": "Eksklusiivinen eBay-tarjous.",
+      "limited": "Rajoitetun ajan tarjous - Osta nyt"
+    }
+  }
+} 

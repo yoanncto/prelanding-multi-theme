@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" type="image/x-icon"   href="assets/shopifyfavicon.ico">
+<title data-i18n="shopify.exclusive_deal"  ></title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="translations/translations.js"></script>
+<style>
+  .shopify-badge {
+    background: linear-gradient(135deg, #008060 0%, #004C3F 100%);
+  }
+  .shopify-button {
+    background: linear-gradient(to bottom, #008060 0%, #004C3F 100%);
+  }
+  .shopify-button:hover {
+    background: linear-gradient(to bottom, #004C3F 0%, #002E25 100%);
+  }
+  .slot {
+    background: #F4F6F8;
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  .spinning {
+    animation: spin 0.6s infinite linear;
+  }
+  @keyframes spin {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+  }
+</style>
+</head>
+<body class="bg-white text-gray-900 font-sans relative">
+
+<div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+  <!-- Shopify Logo -->
+  <div class="mb-6">
+    <img src="assets/logo-bestpractices-old-small-9d48f4906860fcf2c2f4257abede5f6f8d6fbc8f6fe7473e06998c136d77d963.png" alt="Shopify" class="h-8 w-auto">
+  </div>
+
+  <!-- Headline & Shopify Badge -->
+  <h1 class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-2" data-i18n="shopify.exclusive_deal"></h1>
+  <div class="shopify-badge text-white px-4 py-1 rounded-full text-sm font-bold mb-6" data-i18n="shopify.badge"></div>
+
+  <!-- Product Details -->
+  <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6 text-center border border-gray-200">
+    <!-- Product Image -->
+    <div class="mb-6">
+      <img src="{PRODUCT_IMAGE}" alt="Product Image" class="w-full h-auto object-cover rounded-md">
+    </div>
+
+    <!-- Product & Brand Name -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-2" id="productName">{PRODUCT_NAME}</h2>
+
+    <!-- Shopify Verified Badge -->
+    <div class="bg-[#008060] text-white inline-block px-3 py-1 rounded text-sm font-semibold mb-4">
+      Shopify <span class="text-yellow-400" data-i18n="shopify.product.verified"></span>
+    </div>
+
+    <!-- Pricing -->
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <span class="text-red-600 font-bold text-sm" data-i18n="shopify.deal_tag"></span>
+      <span class="text-3xl font-bold text-gray-900" id="productPrice">{PRODUCT_PRICE}</span>
+      <span class="text-sm text-gray-500">
+        <span data-i18n="shopify.product.list_price"></span> <span class="line-through" id="productRetailPrice">{PRODUCT_RETAIL_PRICE}</span>
+      </span>
+    </div>
+
+    <!-- Shipping Info -->
+    <p class="text-sm text-gray-700 mb-4">
+      <span class="text-[#008060] font-bold" data-i18n="shopify.delivery"></span> <span data-i18n="shopify.delivery_time"></span>
+    </p>
+
+    <!-- Call to Action -->
+    <button id="openGame" class="shopify-button w-full text-center text-white font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.main"></button>
+  </div>
+</div>
+
+<!-- Overlay for the Mini-Game -->
+<div id="gameOverlay" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center px-4 hidden">
+  <div class="max-w-md w-full">
+    <!-- Game Content Container -->
+    <div id="gameContent" class="bg-white rounded-lg p-6 text-center">
+      <h2 class="text-xl text-gray-900 font-bold mb-4" data-i18n="games.slot.title"></h2>
+      <p class="text-sm text-gray-600 mb-6" data-i18n="games.slot.description"></p>
+
+      <!-- Slot Machine -->
+      <div class="flex justify-center space-x-4 mb-6">
+        <div class="slot cursor-pointer" data-slot="1">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwODA2MCI+PHBhdGggZD0iTTEyIDNsOCA0djJIOFY3bDQtNHptMCAyLjVMOS41IDd2MGg1TDEyIDUuNXpNMjAgOXYxMGEyIDIgMCAwMS0yIDJINmEyIDIgMCAwMS0yLTJWOWgxNnptLTYgNGEyIDIgMCAxMC00IDAgMiAyIDAgMDA0IDB6Ii8+PC9zdmc+" class="w-8 h-8" alt="Shopify Gift">
+        </div>
+        <div class="slot cursor-pointer" data-slot="2">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwODA2MCI+PHBhdGggZD0iTTEyIDNsOCA0djJIOFY3bDQtNHptMCAyLjVMOS41IDd2MGg1TDEyIDUuNXpNMjAgOXYxMGEyIDIgMCAwMS0yIDJINmEyIDIgMCAwMS0yLTJWOWgxNnptLTYgNGEyIDIgMCAxMC00IDAgMiAyIDAgMDA0IDB6Ii8+PC9zdmc+" class="w-8 h-8" alt="Shopify Gift">
+        </div>
+        <div class="slot cursor-pointer" data-slot="3">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzAwODA2MCI+PHBhdGggZD0iTTEyIDNsOCA0djJIOFY3bDQtNHptMCAyLjVMOS41IDd2MGg1TDEyIDUuNXpNMjAgOXYxMGEyIDIgMCAwMS0yIDJINmEyIDIgMCAwMS0yLTJWOWgxNnptLTYgNGEyIDIgMCAxMC00IDAgMiAyIDAgMDA0IDB6Ii8+PC9zdmc+" class="w-8 h-8" alt="Shopify Gift">
+        </div>
+      </div>
+
+      <button id="spinButton" class="shopify-button w-full text-center text-white font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="games.slot.button"></button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="resultSection" class="bg-white rounded-lg p-6 text-center hidden">
+      <img src="{PRODUCT_IMAGE}" alt="Product Found" class="w-full h-auto object-cover rounded-md mb-4">
+      <div class="bg-[#008060] text-white p-4 rounded-lg mb-4">
+        <p class="text-sm mb-2">
+          <span data-i18n="shopify.result.deal_unlocked"></span> 
+          <span data-i18n="shopify.result.get"></span> 
+          <span id="resultProductName">{PRODUCT_NAME}</span> 
+          <span data-i18n="shopify.result.for"></span> 
+          <span id="resultProductPrice">{PRODUCT_PRICE}</span>. 
+          <span data-i18n="shopify.result.exclusive"></span>
+        </p>
+        <p class="text-xs text-gray-300" data-i18n="shopify.result.limited"></p>
+      </div>
+      <a href="{CHECKOUT_LINK}" class="shopify-button inline-block w-full text-white font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.final"></a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Add debug logs
+  console.log('Shopify slot template loaded');
+  
+  const openGameBtn = document.getElementById('openGame');
+  const gameOverlay = document.getElementById('gameOverlay');
+  const spinButton = document.getElementById('spinButton');
+  const slotElements = document.querySelectorAll('.slot');
+  const resultSection = document.getElementById('resultSection');
+  const gameContent = document.getElementById('gameContent');
+
+  console.log('Elements found:', {
+    openGameBtn: !!openGameBtn,
+    gameOverlay: !!gameOverlay,
+    spinButton: !!spinButton,
+    slotElements: slotElements.length,
+    resultSection: !!resultSection,
+    gameContent: !!gameContent
+  });
+
+  openGameBtn.addEventListener('click', () => {
+    console.log('Game opened');
+    gameOverlay.classList.remove('hidden');
+  });
+
+  spinButton.addEventListener('click', () => {
+    console.log('Spin started');
+    // Disable spin button temporarily
+    spinButton.disabled = true;
+    spinButton.setAttribute('data-i18n', 'games.slot.spinning');
+    
+    // Update translations using the translation manager
+    if (window.i18n) {
+        window.i18n.updatePageTranslations();
+    }
+
+    // Apply spinning animation to slots
+    slotElements.forEach(slot => {
+      slot.classList.add('spinning');
+    });
+
+    // After a short delay, "reveal" the result
+    setTimeout(() => {
+      console.log('Spin completed');
+      // Stop spinning
+      slotElements.forEach(slot => {
+        slot.classList.remove('spinning');
+      });
+      
+      // Hide game content and show result
+      gameContent.classList.add('hidden');
+      resultSection.classList.remove('hidden');
+    }, 2000);
+  });
+</script>
+
+</body>
+</html> 

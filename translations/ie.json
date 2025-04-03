@@ -1,0 +1,98 @@
+{
+  "title": "Massive Clearance",
+  "urgency": "Flash Sale • Very Limited Time",
+  "product": {
+    "name": "Luxura™ Smartwatch",
+    "description": "Premium smartwatch with advanced features.",
+    "price": {
+      "original": "$59.99",
+      "discounted": "$1.99"
+    }
+  },
+  "cta": {
+    "main": "Add to Cart",
+    "final": "Buy Now"
+  },
+  "games": {
+    "box": {
+      "title": "Try Your Luck",
+      "description": "Choose a box to reveal your special offer",
+      "result": "Congratulations! You've unlocked a special offer"
+    },
+    "slot": {
+      "title": "Lucky Machine",
+      "description": "Spin the machine to reveal your special offer!",
+      "button": "Spin",
+      "spinning": "Spinning..."
+    },
+    "scratch": {
+      "title": "Lucky Card",
+      "description": "Scratch to reveal your special offer!",
+      "instruction": "Tap to Reveal"
+    }
+  },
+  "amazon": {
+    "prime": {
+      "badge": "Exceptional Offer",
+      "exclusive_deal": "Exclusive Deal",
+      "delivery": "FREE Delivery",
+      "delivery_time": "by Tomorrow",
+      "deal_tag": "Deal"
+    },
+    "product": {
+      "amazon_choice": "Choice",
+      "list_price": "List Price:"
+    },
+    "result": {
+      "deal_unlocked": "Special Offer Unlocked!",
+      "get": "Get",
+      "for": "for just",
+      "exclusive": "Exclusive offer",
+      "limited": "Limited time offer - Order now"
+    }
+  },
+  "shopify": {
+    "exclusive_deal": "Flash Sale",
+    "badge": "Limited Time Offer",
+    "verified_seller": "Verified Seller",
+    "deal_tag": "SALE",
+    "list_price": "Regular:",
+    "shipping": "Fast & Secure Shipping",
+    "delivery": "Express Shipping",
+    "delivery_time": "2-5 Business Days",
+    "product": {
+      "verified": "Verified",
+      "list_price": "Regular:"
+    },
+    "result": {
+      "deal_unlocked": "Special Offer Unlocked!",
+      "get": "Get",
+      "for": "for just",
+      "exclusive": "Exclusive store offer",
+      "limited": "Limited time offer - Shop now"
+    }
+  },
+  "ebay": {
+    "exclusive_deal": "Daily Deals",
+    "badge": "Today's Featured Deal",
+    "deal_badge": "Special Deal of the Day",
+    "top_rated": "Top Rated Plus",
+    "deal_tag": "DEAL",
+    "list_price": "Was:",
+    "shipping": "Fast & Free Shipping",
+    "delivery": "Express Shipping",
+    "delivery_time": "30-Day Returns",
+    "fast_shipping": "Express Shipping",
+    "product": {
+      "top_rated": "Top Rated Plus Seller",
+      "list_price": "Was:"
+    },
+    "result": {
+      "deal_unlocked": "Special Offer Unlocked!",
+      "get": "Get",
+      "for": "for just",
+      "exclusive": "Exclusive eBay offer",
+      "limited": "Limited time offer - Buy it now"
+    }
+  }
+}
