@@ -97,6 +97,9 @@ Access the prelanding page with URL parameters to customize the experience:
     *   For example, if `px=ABC123`:
         *   Checkout URL without parameters: `https://example.com/checkout` → `https://example.com/checkout?px=ABC123`
         *   Checkout URL with parameters: `https://example.com/checkout?ref=special` → `https://example.com/checkout?ref=special&px=ABC123`
+*   `debug`: `true` or `false` (defaults to `false`)
+    *   If set to `true`, enables detailed console logging for debugging purposes.
+    *   Example: `...?debug=true`
 
 ## Recent Updates
 
