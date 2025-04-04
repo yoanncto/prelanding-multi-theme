@@ -115,7 +115,7 @@
 
         submitButton.disabled = true;
         // Use translation key for button text if available
-        const processingText = window.i18n?.translate('checkout.processing_button') || 'Processing...';
+        const processingText = window.i18n?.getTranslation('checkout.processing_button') || 'Processing...';
         submitButton.textContent = processingText;
 
         const formData = new FormData(checkoutForm);
@@ -141,7 +141,7 @@
                 console.error('Final Checkout URL is invalid or missing. Cannot redirect.');
                 displayCheckoutError('Error: Could not complete purchase. Please contact support.');
                 submitButton.disabled = false;
-                 const submitText = window.i18n?.translate('checkout.submit_button') || 'Complete Purchase';
+                 const submitText = window.i18n?.getTranslation('checkout.submit_button') || 'Complete Purchase';
                  submitButton.textContent = submitText;
             }
 
@@ -149,7 +149,7 @@
             console.error('Error processing checkout form submission:', error);
             displayCheckoutError('An error occurred. Please try again.');
             submitButton.disabled = false;
-            const submitText = window.i18n?.translate('checkout.submit_button') || 'Complete Purchase';
+            const submitText = window.i18n?.getTranslation('checkout.submit_button') || 'Complete Purchase';
             submitButton.textContent = submitText;
         }
     }
