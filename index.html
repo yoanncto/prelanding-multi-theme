@@ -154,6 +154,19 @@
     <div id="content"></div>
 
     <script>
+         // --- Debug Mode Setup ---
+         const urlParamsDebug = new URLSearchParams(window.location.search);
+        window.isDebugMode = urlParamsDebug.get('debug') === 'true';
+        const originalConsoleLog = console.log; // Store original console.log
+        if (!window.isDebugMode) {
+            console.log = function() {}; // Suppress logs if not in debug mode
+            // Optionally suppress other console methods:
+            console.warn = function() {};
+             console.error = function() {};
+        } else {
+            originalConsoleLog('Debug mode enabled.'); // Use original log to show debug is active
+        }
+        // --- End Debug Mode Setup ---
         console.log('Index script starting');
         
         async function initPage() {
