@@ -94,5 +94,41 @@
       "exclusive": "Eksklusiivinen eBay-tarjous.",
       "limited": "Rajoitetun ajan tarjous - Osta nyt"
     }
+  },
+  "checkout": {
+    "title": "Viimeistele Tilaus",
+    "summary_title": "Tilauksen Yhteenveto",
+    "list_price": "Suositushinta:",
+    "total": "Yhteensä:",
+    "shipping_address": "Toimitusosoite",
+    "contact_info": "Yhteystiedot",
+    "submit_button": "Viimeistele Ostos",
+    "processing_button": "Käsitellään..."
+  },
+  "lead_form": {
+    "first_name": "Etunimi",
+    "last_name": "Sukunimi",
+    "address": "Osoite",
+    "city": "Kaupunki",
+    "zip_code": "Postinumero",
+    "email": "Sähköposti",
+    "phone": "Puhelin"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Laatikkopeli Tarjous",
+       "scratch": "Amazon - Raaputusarpa Tarjous",
+       "slot": "Amazon - Kolikkopeli Tarjous"
+    },
+    "ebay": {
+       "box": "eBay - Laatikopeli Tarjous",
+       "scratch": "eBay - Raaputusarpa Tarjous",
+       "slot": "eBay - Kolikkopeli Tarjous"
+    },
+    "shopify": {
+       "box": "Shopify - Laatikopeli Erikois",
+       "scratch": "Shopify - Raaputusarpa Erikois",
+       "slot": "Shopify - Kolikkopeli Erikois"
+    }
   }
 } 

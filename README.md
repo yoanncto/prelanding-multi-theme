@@ -115,6 +115,7 @@ Access the prelanding page with URL parameters to customize the experience:
 *   Updated all asset paths to use absolute references for improved reliability
 *   Fixed currency formatting in game result sections across all themes
 *   Improved price formatting consistency between initial display and game results
+*   Added missing translations (checkout, lead form, page titles) for GR, HU, NL, CZ, CH, CH-DE, CH-FR, LU-DE, LU-FR.
 
 ## Security Features
 

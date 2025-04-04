@@ -94,5 +94,41 @@
       "exclusive": "Exclusieve eBay-aanbieding.",
       "limited": "Tijdelijke aanbieding - Koop nu"
     }
+  },
+  "checkout": {
+    "title": "Voltooi Je Bestelling",
+    "summary_title": "Besteloverzicht",
+    "list_price": "Adviesprijs:",
+    "total": "Totaal:",
+    "shipping_address": "Verzendadres",
+    "contact_info": "Contactgegevens",
+    "submit_button": "Aankoop Voltooien",
+    "processing_button": "Verwerken..."
+  },
+  "lead_form": {
+    "first_name": "Voornaam",
+    "last_name": "Achternaam",
+    "address": "Adres",
+    "city": "Stad",
+    "zip_code": "Postcode",
+    "email": "E-mailadres",
+    "phone": "Telefoon"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Box Spel Aanbieding",
+       "scratch": "Amazon - Kraskaart Aanbieding",
+       "slot": "Amazon - Gokkast Aanbieding"
+    },
+    "ebay": {
+       "box": "eBay - Box Spel Deal",
+       "scratch": "eBay - Kraskaart Deal",
+       "slot": "eBay - Gokkast Deal"
+    },
+    "shopify": {
+       "box": "Shopify - Box Spel Special",
+       "scratch": "Shopify - Kraskaart Special",
+       "slot": "Shopify - Gokkast Special"
+    }
   }
 } 

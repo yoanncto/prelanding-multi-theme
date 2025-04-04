@@ -94,5 +94,41 @@
       "exclusive": "Exklusives eBay-Angebot.",
       "limited": "Zeitlich begrenztes Angebot - Jetzt kaufen"
     }
+  },
+  "checkout": {
+    "title": "Bestellung abschliessen",
+    "summary_title": "Bestellübersicht",
+    "list_price": "Listenpreis:",
+    "total": "Gesamt:",
+    "shipping_address": "Lieferadresse",
+    "contact_info": "Kontaktinformationen",
+    "submit_button": "Kauf abschliessen",
+    "processing_button": "Wird bearbeitet..."
+  },
+  "lead_form": {
+    "first_name": "Vorname",
+    "last_name": "Nachname",
+    "address": "Adresse",
+    "city": "Stadt",
+    "zip_code": "PLZ",
+    "email": "E-Mail",
+    "phone": "Telefon"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Box-Spiel Angebot",
+       "scratch": "Amazon - Rubbelkarte Angebot",
+       "slot": "Amazon - Spielautomat Angebot"
+    },
+    "ebay": {
+       "box": "eBay - Box-Spiel Deal",
+       "scratch": "eBay - Rubbelkarte Deal",
+       "slot": "eBay - Spielautomat Deal"
+    },
+    "shopify": {
+       "box": "Shopify - Box-Spiel Special",
+       "scratch": "Shopify - Rubbelkarte Special",
+       "slot": "Shopify - Spielautomat Special"
+    }
   }
 } 

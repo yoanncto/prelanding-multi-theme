@@ -7,7 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="translations/translations.js"></script>
     <script src="js/currency-formatter.js"></script>
-    <script src="themes/theme-manager.js"></script>
+    <script src="themes/theme-manager.js" defer></script>
+    <script src="js/checkout-handler.js" defer></script>
     <style>
         /* Common styles for all themes */
         .prime-badge {
@@ -155,225 +156,243 @@
     <script>
         console.log('Index script starting');
         
-        function getUrlParameters() {
-            const params = new URLSearchParams(window.location.search);
-            const offerUrl = params.get('checkoutLink')
-
-            const parameters = {
-                price: params.get('price') || '29.99',
-                retailPrice: params.get('retailPrice') || '99.99',
-                productName: params.get('productName') || 'Product Name',
-                productImage: params.get('productImage') || '/assets/placeholder.jpg',
-                theme: params.get('theme') || 'amazon',
-                game: params.get('game') || 'box',
-                checkoutLink: offerUrl,
-                px: params.get('px') || ''
-            };
-            console.log('URL parameters parsed:', parameters);
-            return parameters;
-        }
-
         async function initPage() {
             try {
                 console.log('Initializing page');
                 
-                // Store parameters before cleaning URL
-                const productParams = getUrlParameters();
-                console.log('Product parameters:', productParams);
+                // Wait for ThemeManager to be ready (it parses params internally now)
+                await new Promise(resolve => {
+                     const checkTM = () => {
+                         if (window.themeManager) {
+                             console.log("ThemeManager ready.");
+                             resolve();
+                         } else {
+                              console.log("Waiting for ThemeManager...");
+                             setTimeout(checkTM, 50);
+                         }
+                     };
+                     checkTM();
+                });
 
-                // Store the original pathname for base path
-                const originalPathname = window.location.pathname;
-                const basePath = originalPathname.substring(0, originalPathname.lastIndexOf('/') + 1);
-                
-                // Clean URL to show only root domain but maintain internal base path
+                const productParams = window.themeManager.productParams; // Get params from ThemeManager
+
+                // --- URL Cleaning and Base Tag Setup (Simplified) ---
                 const currentUrl = new URL(window.location.href);
-                window.history.replaceState(
-                    { basePath: basePath }, 
-                    document.title, 
-                    currentUrl.origin
-                );
+                const originalPath = currentUrl.pathname;
+                const basePath = originalPath.substring(0, originalPath.lastIndexOf('/') + 1);
+                const cleanPath = basePath.endsWith('/') && basePath.length > 1 ? basePath : '/';
 
-                // Set base tag to maintain relative paths
+                window.history.replaceState(
+                    { basePath: basePath },
+                    document.title,
+                     currentUrl.origin + (cleanPath === '/' ? '' : cleanPath)
+                );
+                console.log(`URL cleaned. Base path kept: ${basePath}`);
+
                 const baseTag = document.createElement('base');
                 baseTag.href = currentUrl.origin + basePath;
+                const existingBase = document.querySelector('base');
+                if (existingBase) existingBase.remove();
                 document.head.prepend(baseTag);
-                // Dynamically set the favicon based on the theme
+                console.log('Base tag set to:', baseTag.href);
+                // --- End URL Cleaning ---
+
+                // --- Favicon Setup ---
                 const faviconLink = document.createElement('link');
                 faviconLink.rel = 'icon';
-                // Construct the favicon path based on the theme
-                faviconLink.href = `assets/${productParams.theme}favicon.ico`; 
+                faviconLink.href = `assets/${productParams.theme}favicon.ico`;
                 faviconLink.type = 'image/x-icon';
+                document.querySelectorAll("link[rel='icon']").forEach(link => link.remove());
                 document.head.appendChild(faviconLink);
                 console.log('Favicon set to:', faviconLink.href);
-                // Wait for translations to be ready
-                if (window.i18n && !window.i18n.translations) {
-                    console.log('Waiting for translations');
-                    await new Promise(resolve => {
-                        const checkTranslations = () => {
-                            if (window.i18n.translations) {
-                                console.log('Translations loaded');
-                                resolve();
-                            } else {
-                                setTimeout(checkTranslations, 50);
-                            }
-                        };
-                        checkTranslations();
-                    });
-                }
+                 // --- End Favicon Setup ---
 
-                // Load the template based on the current theme and game type
-                const template = await window.themeManager.loadTemplate(productParams);
-                if (template) {
-                    console.log('Template loaded, length:', template.length);
-                    const content = document.getElementById('content');
-                    content.innerHTML = template;
-                    console.log('Template inserted into DOM');
+                // --- Translations Setup ---
+                 if (window.i18n && typeof window.i18n.init === 'function' && !window.i18n.translations) {
+                     console.log('Initializing and waiting for translations...');
+                      await new Promise((resolve, reject) => {
+                          const checkTranslations = () => {
+                              if (window.i18n.translations) {
+                                  console.log('Translations loaded.');
+                                  resolve();
+                              } else {
+                                  setTimeout(checkTranslations, 50);
+                              }
+                          };
+                          if (!window.i18n.isInitialized) {
+                               window.i18n.init().then(checkTranslations).catch(err => {
+                                   console.error("Translation init failed:", err);
+                                   resolve(); // Continue anyway
+                               });
+                          } else {
+                               checkTranslations();
+                          }
+                      });
+                 } else {
+                      console.log('Translations seem ready or i18n object not configured as expected.');
+                 }
+                  // --- End Translations Setup ---
 
-                    // Replace placeholders with actual values
-                    replacePlaceholders(productParams);
+                // Load the initial game template
+                const template = await window.themeManager.loadGameTemplate();
+                const contentDiv = document.getElementById('content');
 
-                    // Initialize game-specific scripts
-                    initializeGameScripts(productParams.game);
-                    console.log('Game scripts initialized');
-                    
+                if (template && contentDiv) {
+                    console.log('Initial game template loaded, length:', template.length);
+                    contentDiv.innerHTML = template;
+                    console.log('Initial game template inserted into DOM');
+
+                    // Placeholder replacement is now handled inside themeManager._fetchAndProcessTemplate
+                    // Initialize game-specific scripts AFTER template insertion
+                    initializeGameScripts(productParams.game, productParams);
+                    console.log('Game scripts initialization requested for:', productParams.game);
+
                     // Apply translations
-                    if (window.i18n) {
-                        console.log('Applying translations');
-                        window.i18n.updatePageTranslations();
+                    if (window.i18n && typeof window.i18n.updatePageTranslations === 'function') {
+                        console.log('Applying translations to initial content');
+                        window.i18n.updatePageTranslations(contentDiv);
+                         updatePageTitle(productParams);
                     }
                 } else {
-                    console.error('Template failed to load');
+                    console.error('Initial game template failed to load or #content not found');
+                    if(contentDiv) contentDiv.innerHTML = '<p class="text-center text-red-600 p-8">Error loading content. Please try refreshing the page.</p>';
                 }
             } catch (error) {
-                console.error('Error initializing page:', error);
+                console.error('Critical Error initializing page:', error);
+                 const contentDiv = document.getElementById('content');
+                 if(contentDiv) contentDiv.innerHTML = '<p class="text-center text-red-600 p-8">An unexpected error occurred. Please try refreshing the page.</p>';
             }
         }
 
-        function replacePlaceholders(params) {
-            document.querySelectorAll('[id="productName"], [id="resultProductName"]').forEach(el => el.textContent = params.productName);
-            document.querySelectorAll('[id="productPrice"], [id="resultProductPrice"]').forEach(el => el.textContent = window.currencyFormatter.format(params.price));
-            document.querySelectorAll('[id="productRetailPrice"]').forEach(el => el.textContent = window.currencyFormatter.format(params.retailPrice));
-            document.querySelectorAll('img[src="{PRODUCT_IMAGE}"]').forEach(el => el.src = params.productImage);
-            document.querySelectorAll('a[href="{CHECKOUT_LINK}"]').forEach(el => el.href = offerUrl);
-        }
+        // Placeholder replacement function (can be used by themeManager)
+        window.replacePlaceholders = function(params, containerElement) {
+            if (!containerElement) {
+                 console.warn("replacePlaceholders called without containerElement");
+                 return;
+            }
+            console.log('Running replacePlaceholders for container:', containerElement.id || containerElement.tagName);
 
-        function initializeGameScripts(gameType) {
-            // Common elements
-            const openGameBtn = document.getElementById('openGame');
-            const gameOverlay = document.getElementById('gameOverlay');
-            const resultSection = document.getElementById('resultSection');
-            
-            if (openGameBtn && gameOverlay) {
-                openGameBtn.addEventListener('click', () => {
-                    gameOverlay.classList.remove('hidden');
-                    gameOverlay.classList.add('fade-in');
-                });
+            const price = window.currencyFormatter?.format(params.price) || params.price;
+            const retailPrice = window.currencyFormatter?.format(params.retailPrice) || params.retailPrice;
+            // Note: checkoutLink with px param is handled better in themeManager/checkoutHandler now
+            const checkoutLinkForData = params.checkoutLink || '#'; // Raw link for potential data attributes
+
+            const replacements = {
+                '{PRODUCT_NAME}': params.productName,
+                '{PRODUCT_PRICE}': price,
+                '{PRODUCT_RETAIL_PRICE}': retailPrice,
+                '{PRODUCT_IMAGE}': params.productImage,
+                // We don't replace {CHECKOUT_LINK} directly in hrefs anymore
+            };
+
+            const walker = document.createTreeWalker(containerElement, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, null, false);
+            let node;
+            const nodesToProcess = [];
+            while(node = walker.nextNode()) {
+                nodesToProcess.push(node);
             }
 
-            switch(gameType) {
-                case 'slot':
-                    initSlotGame();
-                    break;
-                case 'box':
-                    initBoxGame();
-                    break;
-                case 'scratch':
-                    initScratchGame();
-                    break;
+             nodesToProcess.forEach(node => {
+                 if (node.nodeType === Node.TEXT_NODE) {
+                     let originalValue = node.nodeValue;
+                     Object.keys(replacements).forEach(key => {
+                         if (originalValue.includes(key)) {
+                             // Correctly escaped RegExp
+                             originalValue = originalValue.replace(new RegExp(key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replacements[key]);
+                             node.nodeValue = originalValue;
+                         }
+                     });
+                 } else if (node.nodeType === Node.ELEMENT_NODE) {
+                     // Replace in text content of specific data attributes (like data-product-name)
+                     Object.keys(node.dataset).forEach(dataKey => {
+                          let value = node.dataset[dataKey];
+                          Object.keys(replacements).forEach(key => {
+                              if(value === key) { // Check if data attribute value IS the placeholder
+                                  // Replace the element's text content, not the data attribute itself
+                                  if(node.textContent.includes(key)) {
+                                      node.textContent = node.textContent.replace(key, replacements[key]);
+                                      console.log(`Replaced text for data attribute ${dataKey} on`, node);
+                                  }
+                              } else if (value.includes(key)) { // Replace within data attribute value if needed
+                                    // Correctly escaped RegExp
+                                    node.dataset[dataKey] = value.replace(new RegExp(key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replacements[key]);
+                              }
+                          });
+                     });
+
+                     // Replace in specific attributes like src
+                     if (node.tagName === 'IMG' && node.getAttribute('src')?.includes('{PRODUCT_IMAGE}')) {
+                         node.src = replacements['{PRODUCT_IMAGE}'];
+                     }
+                      // Replace in anchor href if it explicitly uses a placeholder (less common now)
+                      if (node.tagName === 'A' && node.getAttribute('href')?.includes('{CHECKOUT_LINK}')) {
+                          console.warn("Found direct {CHECKOUT_LINK} in href, replacing but prefer data attributes or JS handling:", node);
+                          node.href = checkoutLinkForData; // Use raw link
+                      }
+                 }
+             });
+             console.log('Placeholder replacement finished for container.');
+         }
+
+        function initializeGameScripts(gameType, params) {
+            if (!gameType) {
+                console.warn("No game type specified, cannot initialize game scripts.");
+                 // Potentially load a default display or error message
+                 const contentDiv = document.getElementById('content');
+                 if(contentDiv) contentDiv.innerHTML += '<p class="text-center text-yellow-600 p-4">No game selected.</p>';
+                return;
+            }
+
+            document.querySelectorAll('script[data-game-script]').forEach(script => script.remove());
+
+            const script = document.createElement('script');
+            script.src = `js/games/${gameType}.js`;
+            script.setAttribute('data-game-script', 'true');
+            script.defer = true;
+
+            script.onload = () => {
+                console.log(`${gameType}.js loaded.`);
+                if (typeof window.initializeGame === 'function') {
+                     console.log(`Calling initializeGame() for ${gameType}.js`);
+                     try {
+                        window.initializeGame(params);
+                        // NOTE: The final checkout button listener setup is removed from here.
+                        // It should be triggered by the game logic itself when the result section is shown,
+                        // OR handled within the window.loadCheckoutPage function implicitly.
+                        // The crucial part is that the button in the template calls window.loadCheckoutPage().
+                     } catch (error) {
+                         console.error(`Error during initializeGame for ${gameType}:`, error);
+                     }
+                } else {
+                    console.warn(`initializeGame function not found in ${gameType}.js`);
+                }
+            };
+            script.onerror = (e) => {
+                console.error(`Failed to load game script: ${script.src}`, e);
+                 const contentDiv = document.getElementById('content');
+                 if(contentDiv) contentDiv.innerHTML += '<p class="text-center text-red-500 p-4">Error loading game components.</p>';
+            };
+            document.body.appendChild(script);
+        }
+
+        function updatePageTitle(params) {
+            const titleElement = document.querySelector('head title');
+            if (titleElement) {
+                const themeName = params.theme.charAt(0).toUpperCase() + params.theme.slice(1);
+                // Use game name if available, otherwise just theme name
+                const gameName = params.game ? params.game.charAt(0).toUpperCase() + params.game.slice(1) : '';
+                const titleKey = `page_title.${params.theme}${params.game ? '.' + params.game : ''}`; // e.g., page_title.amazon.slot
+                const defaultTitle = `${themeName}${gameName ? ' ' + gameName : ''} Offer`;
+                titleElement.textContent = window.i18n?.getTranslation(titleKey) || defaultTitle;
+                console.log("Page title updated to:", titleElement.textContent);
             }
         }
 
-        function initSlotGame() {
-            const spinButton = document.getElementById('spinButton');
-            const slotElements = document.querySelectorAll('.slot');
-            const resultSection = document.getElementById('resultSection');
-            const gameContent = document.getElementById('gameContent');
-
-            if (spinButton && slotElements.length && resultSection && gameContent) {
-                spinButton.addEventListener('click', () => {
-                    spinButton.disabled = true;
-                    spinButton.setAttribute('data-i18n', 'games.slot.spinning');
-                    window.i18n?.updatePageTranslations();
-                    
-                    slotElements.forEach(slot => {
-                        slot.classList.add('spinning');
-                    });
-
-                    setTimeout(() => {
-                        slotElements.forEach(slot => {
-                            slot.classList.remove('spinning');
-                        });
-                        
-                        gameContent.classList.add('fade-out');
-                        
-                        setTimeout(() => {
-                            gameContent.remove();
-                            resultSection.classList.remove('hidden');
-                            setTimeout(() => {
-                                resultSection.classList.add('visible');
-                            }, 50);
-                        }, 300);
-                    }, 2000);
-                });
-            }
-        }
-
-        function initBoxGame() {
-            const boxes = document.querySelectorAll('.box');
-            const gameContent = document.getElementById('gameContent');
-            const resultSection = document.getElementById('resultSection');
-
-            if (boxes.length && gameContent && resultSection) {
-                boxes.forEach(box => {
-                    box.addEventListener('click', () => {
-                        gameContent.classList.add('fade-out');
-                        
-                        setTimeout(() => {
-                            gameContent.remove();
-                            resultSection.classList.remove('hidden');
-                            setTimeout(() => {
-                                resultSection.classList.add('visible');
-                            }, 50);
-                        }, 300);
-                    });
-                });
-            }
-        }
-
-        function initScratchGame() {
-            const revealCover = document.getElementById('revealCover');
-            const gameContent = document.getElementById('gameContent');
-            const resultSection = document.getElementById('resultSection');
-
-            if (revealCover && gameContent && resultSection) {
-                let isAnimating = false;
-
-                revealCover.addEventListener('click', () => {
-                    if (isAnimating) return;
-                    isAnimating = true;
-                    
-                    console.log('Scratch reveal clicked');
-                    revealCover.classList.add('revealed');
-                    
-                    setTimeout(() => {
-                        gameContent.classList.add('fade-out');
-                        
-                        setTimeout(() => {
-                            gameContent.remove();
-                            resultSection.classList.remove('hidden');
-                            resultSection.classList.add('visible');
-                            isAnimating = false;
-                        }, 300);
-                    }, 300);
-                });
-            }
-        }
-
-        // Initialize the page when everything is loaded
+        // Initialize page on DOM ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initPage);
+             document.addEventListener('DOMContentLoaded', initPage);
         } else {
-            initPage();
+             initPage();
         }
     </script>
 </body>

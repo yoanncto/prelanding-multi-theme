@@ -94,5 +94,41 @@
       "exclusive": "Eksklusiivne eBay pakkumine.",
       "limited": "Ajaliselt piiratud pakkumine - Osta kohe"
     }
+  },
+  "checkout": {
+    "title": "Vormista Tellimus",
+    "summary_title": "Tellimuse Kokkuvõte",
+    "list_price": "Soovituslik hind:",
+    "total": "Kokku:",
+    "shipping_address": "Tarneaadress",
+    "contact_info": "Kontaktandmed",
+    "submit_button": "Vormista Ost",
+    "processing_button": "Töötlemine..."
+  },
+  "lead_form": {
+    "first_name": "Eesnimi",
+    "last_name": "Perekonnanimi",
+    "address": "Aadress",
+    "city": "Linn",
+    "zip_code": "Postiindeks",
+    "email": "E-post",
+    "phone": "Telefon"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Karbimängu Pakkumine",
+       "scratch": "Amazon - Kraapekaardi Pakkumine",
+       "slot": "Amazon - Slotimängu Pakkumine"
+    },
+    "ebay": {
+       "box": "eBay - Karbimängu Pakkumine",
+       "scratch": "eBay - Kraapekaardi Pakkumine",
+       "slot": "eBay - Slotimängu Pakkumine"
+    },
+    "shopify": {
+       "box": "Shopify - Karbimängu Eri",
+       "scratch": "Shopify - Kraapekaardi Eri",
+       "slot": "Shopify - Slotimängu Eri"
+    }
   }
 } 

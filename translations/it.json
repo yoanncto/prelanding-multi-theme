@@ -94,5 +94,41 @@
       "exclusive": "Offerta esclusiva eBay.",
       "limited": "Offerta a tempo limitato - Acquista ora"
     }
+  },
+  "checkout": {
+    "title": "Completa il Tuo Ordine",
+    "summary_title": "Riepilogo Ordine",
+    "list_price": "Prezzo di listino:",
+    "total": "Totale:",
+    "shipping_address": "Indirizzo di Spedizione",
+    "contact_info": "Informazioni di Contatto",
+    "submit_button": "Completa Acquisto",
+    "processing_button": "Elaborazione..."
+  },
+  "lead_form": {
+    "first_name": "Nome",
+    "last_name": "Cognome",
+    "address": "Indirizzo",
+    "city": "Città",
+    "zip_code": "CAP",
+    "email": "Email",
+    "phone": "Telefono"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Offerta Gioco Box",
+       "scratch": "Amazon - Offerta Gratta e Vinci",
+       "slot": "Amazon - Offerta Slot Machine"
+    },
+    "ebay": {
+       "box": "eBay - Offerta Gioco Box",
+       "scratch": "eBay - Offerta Gratta e Vinci",
+       "slot": "eBay - Offerta Slot Machine"
+    },
+    "shopify": {
+       "box": "Shopify - Speciale Gioco Box",
+       "scratch": "Shopify - Speciale Gratta e Vinci",
+       "slot": "Shopify - Speciale Slot Machine"
+    }
   }
 } 

@@ -94,5 +94,41 @@
       "exclusive": "Exkluzív eBay-ajánlat.",
       "limited": "Időben korlátozott ajánlat - Vásárolj most"
     }
+  },
+  "checkout": {
+    "title": "Fejezd be a Rendelésed",
+    "summary_title": "Rendelés Összegzése",
+    "list_price": "Listaár:",
+    "total": "Összesen:",
+    "shipping_address": "Szállítási Cím",
+    "contact_info": "Kapcsolattartási Adatok",
+    "submit_button": "Vásárlás Befejezése",
+    "processing_button": "Feldolgozás..."
+  },
+  "lead_form": {
+    "first_name": "Keresztnév",
+    "last_name": "Vezetéknév",
+    "address": "Cím",
+    "city": "Város",
+    "zip_code": "Irányítószám",
+    "email": "E-mail",
+    "phone": "Telefon"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Dobozos Játék Ajánlat",
+       "scratch": "Amazon - Kaparós Kártya Ajánlat",
+       "slot": "Amazon - Nyerőgép Ajánlat"
+    },
+    "ebay": {
+       "box": "eBay - Dobozos Játék Akció",
+       "scratch": "eBay - Kaparós Kártya Akció",
+       "slot": "eBay - Nyerőgép Akció"
+    },
+    "shopify": {
+       "box": "Shopify - Dobozos Játék Különleges",
+       "scratch": "Shopify - Kaparós Kártya Különleges",
+       "slot": "Shopify - Nyerőgép Különleges"
+    }
   }
 } 

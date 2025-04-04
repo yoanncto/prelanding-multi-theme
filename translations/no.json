@@ -88,11 +88,47 @@
       "list_price": "Var:"
     },
     "result": {
-      "deal_unlocked": "Tilbud l��st opp!",
+      "deal_unlocked": "Tilbud låst opp!",
       "get": "Få",
       "for": "nå for kun",
       "exclusive": "Eksklusivt eBay-tilbud.",
       "limited": "Tidsbegrenset tilbud - Kjøp nå"
+    }
+  },
+  "checkout": {
+    "title": "Fullfør Bestillingen",
+    "summary_title": "Ordreoversikt",
+    "list_price": "Veiledende pris:",
+    "total": "Totalt:",
+    "shipping_address": "Leveringsadresse",
+    "contact_info": "Kontaktinformasjon",
+    "submit_button": "Fullfør Kjøpet",
+    "processing_button": "Behandler..."
+  },
+  "lead_form": {
+    "first_name": "Fornavn",
+    "last_name": "Etternavn",
+    "address": "Adresse",
+    "city": "Poststed",
+    "zip_code": "Postnummer",
+    "email": "E-post",
+    "phone": "Telefon"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Eskespill Tilbud",
+       "scratch": "Amazon - Skrapekort Tilbud",
+       "slot": "Amazon - Spilleautomat Tilbud"
+    },
+    "ebay": {
+       "box": "eBay - Eskespill Deal",
+       "scratch": "eBay - Skrapekort Deal",
+       "slot": "eBay - Spilleautomat Deal"
+    },
+    "shopify": {
+       "box": "Shopify - Eskespill Spesial",
+       "scratch": "Shopify - Skrapekort Spesial",
+       "slot": "Shopify - Spilleautomat Spesial"
     }
   }
 } 

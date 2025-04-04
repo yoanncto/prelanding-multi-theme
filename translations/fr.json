@@ -94,5 +94,41 @@
       "exclusive": "Offre exclusive eBay",
       "limited": "Offre à durée limitée - Achetez maintenant"
     }
+  },
+  "checkout": {
+    "title": "Complétez Votre Commande",
+    "summary_title": "Résumé de la Commande",
+    "list_price": "Prix de référence :",
+    "total": "Total :",
+    "shipping_address": "Adresse de Livraison",
+    "contact_info": "Informations de Contact",
+    "submit_button": "Finaliser l'Achat",
+    "processing_button": "Traitement..."
+  },
+  "lead_form": {
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "address": "Adresse",
+    "city": "Ville",
+    "zip_code": "Code Postal",
+    "email": "E-mail",
+    "phone": "Téléphone"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Offre Jeu Boîte",
+       "scratch": "Amazon - Offre Carte à Gratter",
+       "slot": "Amazon - Offre Machine à Sous"
+    },
+    "ebay": {
+       "box": "eBay - Offre Jeu Boîte",
+       "scratch": "eBay - Offre Carte à Gratter",
+       "slot": "eBay - Offre Machine à Sous"
+    },
+    "shopify": {
+       "box": "Shopify - Spécial Jeu Boîte",
+       "scratch": "Shopify - Spécial Carte à Gratter",
+       "slot": "Shopify - Spécial Machine à Sous"
+    }
   }
 }

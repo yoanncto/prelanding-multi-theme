@@ -25,6 +25,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .slot-icon {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    position: absolute;
+    transition: transform 0.1s ease-out;
+  }
+  .slot.spinning .slot-icon {
+    animation: veryFastSpin 0.1s infinite linear;
+  }
+  @keyframes veryFastSpin {
+    0% { transform: translateY(-15px) rotate(10deg); opacity: 0.5; }
+    50% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(15px) rotate(-10deg); opacity: 0.5; }
   }
 </style>
 </head>
@@ -115,7 +132,7 @@
         </p>
         <p class="text-xs text-gray-300" data-i18n="amazon.result.limited"></p>
       </div>
-      <a href="{CHECKOUT_LINK}" class="amazon-button inline-block w-full text-gray-900 font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.final"></a>
+      <button id="finalCheckoutTrigger" onclick="window.loadCheckoutPage();" class="amazon-button inline-block w-full text-gray-900 font-bold text-lg py-3 rounded-lg shadow-sm transition" data-i18n="cta.final"></button>
     </div>
   </div>
 </div>

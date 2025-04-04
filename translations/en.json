@@ -94,5 +94,41 @@
       "exclusive": "Exclusive eBay offer",
       "limited": "Limited time offer - Buy it now"
     }
+  },
+  "checkout": {
+    "title": "Complete Your Order",
+    "summary_title": "Order Summary",
+    "list_price": "List Price:",
+    "total": "Total:",
+    "shipping_address": "Shipping Address",
+    "contact_info": "Contact Information",
+    "submit_button": "Complete Purchase",
+    "processing_button": "Processing..."
+  },
+  "lead_form": {
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "address": "Address",
+    "city": "City",
+    "zip_code": "Zip Code",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Box Game Offer",
+       "scratch": "Amazon - Scratch Card Offer",
+       "slot": "Amazon - Slot Machine Offer"
+    },
+    "ebay": {
+       "box": "eBay - Box Game Deal",
+       "scratch": "eBay - Scratch Card Deal",
+       "slot": "eBay - Slot Machine Deal"
+    },
+    "shopify": {
+       "box": "Shopify - Box Game Special",
+       "scratch": "Shopify - Scratch Card Special",
+       "slot": "Shopify - Slot Machine Special"
+    }
   }
 }

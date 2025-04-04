@@ -94,5 +94,41 @@
       "exclusive": "Oferta exclusiva de eBay.",
       "limited": "Oferta por tiempo limitado - Compra ahora"
     }
+  },
+  "checkout": {
+    "title": "Completar Pedido",
+    "summary_title": "Resumen del Pedido",
+    "list_price": "Precio recomendado:",
+    "total": "Total:",
+    "shipping_address": "Dirección de Envío",
+    "contact_info": "Información de Contacto",
+    "submit_button": "Completar Compra",
+    "processing_button": "Procesando..."
+  },
+  "lead_form": {
+    "first_name": "Nombre",
+    "last_name": "Apellidos",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "zip_code": "Código Postal",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Oferta Juego Caja",
+       "scratch": "Amazon - Oferta Rasca y Gana",
+       "slot": "Amazon - Oferta Tragaperras"
+    },
+    "ebay": {
+       "box": "eBay - Oferta Juego Caja",
+       "scratch": "eBay - Oferta Rasca y Gana",
+       "slot": "eBay - Oferta Tragaperras"
+    },
+    "shopify": {
+       "box": "Shopify - Especial Juego Caja",
+       "scratch": "Shopify - Especial Rasca y Gana",
+       "slot": "Shopify - Especial Tragaperras"
+    }
   }
 } 

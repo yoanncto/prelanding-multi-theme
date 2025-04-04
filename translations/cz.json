@@ -94,5 +94,41 @@
       "exclusive": "Exkluzivní eBay nabídka.",
       "limited": "Časově omezená nabídka - Kupte nyní"
     }
+  },
+  "checkout": {
+    "title": "Dokončete svou objednávku",
+    "summary_title": "Souhrn objednávky",
+    "list_price": "Doporučená cena:",
+    "total": "Celkem:",
+    "shipping_address": "Doručovací adresa",
+    "contact_info": "Kontaktní údaje",
+    "submit_button": "Dokončit nákup",
+    "processing_button": "Zpracovává se..."
+  },
+  "lead_form": {
+    "first_name": "Křestní jméno",
+    "last_name": "Příjmení",
+    "address": "Adresa",
+    "city": "Město",
+    "zip_code": "PSČ",
+    "email": "E-mail",
+    "phone": "Telefon"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Nabídka hry s krabicemi",
+       "scratch": "Amazon - Nabídka stíracích losů",
+       "slot": "Amazon - Nabídka hracích automatů"
+    },
+    "ebay": {
+       "box": "eBay - Akce hry s krabicemi",
+       "scratch": "eBay - Akce stíracích losů",
+       "slot": "eBay - Akce hracích automatů"
+    },
+    "shopify": {
+       "box": "Shopify - Speciální hra s krabicemi",
+       "scratch": "Shopify - Speciální stírací los",
+       "slot": "Shopify - Speciální hrací automat"
+    }
   }
 } 

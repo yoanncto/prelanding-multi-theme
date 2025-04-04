@@ -94,5 +94,41 @@
       "exclusive": "Exklusivt eBay-erbjudande.",
       "limited": "Tidsbegränsat erbjudande - Köp nu"
     }
+  },
+  "checkout": {
+    "title": "Slutför Beställning",
+    "summary_title": "Orderöversikt",
+    "list_price": "Rekommenderat pris:",
+    "total": "Totalt:",
+    "shipping_address": "Leveransadress",
+    "contact_info": "Kontaktinformation",
+    "submit_button": "Slutför Köp",
+    "processing_button": "Bearbetar..."
+  },
+  "lead_form": {
+    "first_name": "Förnamn",
+    "last_name": "Efternamn",
+    "address": "Adress",
+    "city": "Ort",
+    "zip_code": "Postnummer",
+    "email": "E-post",
+    "phone": "Telefon"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Box Spel Erbjudande",
+       "scratch": "Amazon - Skraplott Erbjudande",
+       "slot": "Amazon - Spelautomat Erbjudande"
+    },
+    "ebay": {
+       "box": "eBay - Box Spel Deal",
+       "scratch": "eBay - Skraplott Deal",
+       "slot": "eBay - Spelautomat Deal"
+    },
+    "shopify": {
+       "box": "Shopify - Box Spel Special",
+       "scratch": "Shopify - Skraplott Special",
+       "slot": "Shopify - Spelautomat Special"
+    }
   }
 } 

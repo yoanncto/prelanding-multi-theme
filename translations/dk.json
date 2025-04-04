@@ -1,12 +1,12 @@
 {
   "title": "Stort Udsalg",
-  "urgency": "Flash Salg • Meget Begrænset Tid",
+  "urgency": "Lynsalg • Meget Begrænset Tid",
   "product": {
     "name": "Luxura™ Smartwatch",
     "description": "Premium smartwatch med avancerede funktioner.",
     "price": {
-      "original": "59,99€",
-      "discounted": "1,99€"
+      "original": "449,99 kr",
+      "discounted": "14,99 kr"
     }
   },
   "cta": {
@@ -15,25 +15,25 @@
   },
   "games": {
     "box": {
-      "title": "Vælg Din Lykkeæske",
-      "description": "Vælg en æske for at afsløre dit eksklusive tilbud.",
+      "title": "Vælg Din Lykkeboks",
+      "description": "Vælg en boks for at afsløre dit eksklusive tilbud.",
       "result": "Tillykke! Du har låst op for et eksklusivt tilbud"
     },
     "slot": {
-      "title": "Lykkehjul",
-      "description": "Drej hjulet for at opdage dit særlige tilbud!",
-      "button": "Drej Nu",
-      "spinning": "Drejer..."
+      "title": "Lykkehjulet",
+      "description": "Spin hjulet for at opdage dit særlige tilbud!",
+      "button": "Spin",
+      "spinning": "Spinner..."
     },
     "scratch": {
-      "title": "Skrabekort",
+      "title": "Skrabelod",
       "description": "Skrab for at opdage dit særlige tilbud!",
       "instruction": "Tryk for at Afsløre"
     }
   },
   "amazon": {
     "prime": {
-      "badge": "Enestående Tilbud",
+      "badge": "Fremragende Tilbud",
       "exclusive_deal": "Eksklusivt Tilbud",
       "delivery": "GRATIS Levering",
       "delivery_time": "i morgen",
@@ -41,10 +41,10 @@
     },
     "product": {
       "amazon_choice": "Choice",
-      "list_price": "Vejledende pris:"
+      "list_price": "Vejl. pris:"
     },
     "result": {
-      "deal_unlocked": "Særligt tilbud låst op!",
+      "deal_unlocked": "Særtilbud låst op!",
       "get": "Få",
       "for": "nu for kun",
       "exclusive": "Eksklusivt tilbud",
@@ -52,20 +52,20 @@
     }
   },
   "shopify": {
-    "exclusive_deal": "Flash Salg",
+    "exclusive_deal": "Lynsalg",
     "badge": "Tidsbegrænset Tilbud",
-    "verified_seller": "Verificeret Sælger",
-    "deal_tag": "SALG",
-    "list_price": "Normal pris:",
+    "verified_seller": "Bekræftet Sælger",
+    "deal_tag": "UDSALG",
+    "list_price": "Normalpris:",
     "shipping": "Hurtig & Sikker Levering",
-    "delivery": "Express Levering",
+    "delivery": "Ekspreslevering",
     "delivery_time": "2-5 Hverdage",
     "product": {
-      "verified": "Verificeret",
-      "list_price": "Normal pris:"
+      "verified": "Bekræftet",
+      "list_price": "Normalpris:"
     },
     "result": {
-      "deal_unlocked": "Flash-tilbud låst op!",
+      "deal_unlocked": "Lyntilbud låst op!",
       "get": "Få",
       "for": "nu for kun",
       "exclusive": "Eksklusivt butikstilbud.",
@@ -75,17 +75,17 @@
   "ebay": {
     "exclusive_deal": "Dagens Tilbud",
     "badge": "Dagens Tilbud",
-    "deal_badge": "Særligt Dagens Tilbud",
+    "deal_badge": "Særtilbud for Dagen",
     "top_rated": "Top Rated Plus",
     "deal_tag": "TILBUD",
-    "list_price": "Var:",
+    "list_price": "Før:",
     "shipping": "Hurtig & Gratis Levering",
-    "delivery": "Express Levering",
+    "delivery": "Ekspreslevering",
     "delivery_time": "30 Dages Returret",
-    "fast_shipping": "Express Levering",
+    "fast_shipping": "Ekspreslevering",
     "product": {
       "top_rated": "Top Rated Plus Sælger",
-      "list_price": "Var:"
+      "list_price": "Før:"
     },
     "result": {
       "deal_unlocked": "Tilbud låst op!",
@@ -93,6 +93,42 @@
       "for": "nu for kun",
       "exclusive": "Eksklusivt eBay-tilbud.",
       "limited": "Tidsbegrænset tilbud - Køb nu"
+    }
+  },
+  "checkout": {
+    "title": "Gennemfør Ordre",
+    "summary_title": "Ordreoversigt",
+    "list_price": "Vejl. pris:",
+    "total": "Total:",
+    "shipping_address": "Leveringsadresse",
+    "contact_info": "Kontaktoplysninger",
+    "submit_button": "Gennemfør Køb",
+    "processing_button": "Behandler..."
+  },
+  "lead_form": {
+    "first_name": "Fornavn",
+    "last_name": "Efternavn",
+    "address": "Adresse",
+    "city": "By",
+    "zip_code": "Postnummer",
+    "email": "E-mail",
+    "phone": "Telefon"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Boksspil Tilbud",
+       "scratch": "Amazon - Skrabelod Tilbud",
+       "slot": "Amazon - Spilleautomat Tilbud"
+    },
+    "ebay": {
+       "box": "eBay - Boksspil Deal",
+       "scratch": "eBay - Skrabelod Deal",
+       "slot": "eBay - Spilleautomat Deal"
+    },
+    "shopify": {
+       "box": "Shopify - Boksspil Special",
+       "scratch": "Shopify - Skrabelod Special",
+       "slot": "Shopify - Spilleautomat Special"
     }
   }
 } 

@@ -1,33 +1,33 @@
 {
-  "title": "Massive Clearance",
+  "title": "Massive Sale",
   "urgency": "Flash Sale • Very Limited Time",
   "product": {
     "name": "Luxura™ Smartwatch",
     "description": "Premium smartwatch with advanced features.",
     "price": {
-      "original": "$59.99",
-      "discounted": "$1.99"
+      "original": "€59.99",
+      "discounted": "€1.99"
     }
   },
   "cta": {
-    "main": "Add to Cart",
+    "main": "Add to Basket",
     "final": "Buy Now"
   },
   "games": {
     "box": {
-      "title": "Try Your Luck",
-      "description": "Choose a box to reveal your special offer",
-      "result": "Congratulations! You've unlocked a special offer"
+      "title": "Choose Your Lucky Box",
+      "description": "Select a box to reveal your exclusive offer.",
+      "result": "Congratulations! You've unlocked an exclusive offer"
     },
     "slot": {
       "title": "Lucky Machine",
-      "description": "Spin the machine to reveal your special offer!",
+      "description": "Spin the machine to discover your special offer!",
       "button": "Spin",
       "spinning": "Spinning..."
     },
     "scratch": {
       "title": "Lucky Card",
-      "description": "Scratch to reveal your special offer!",
+      "description": "Scratch to discover your special offer!",
       "instruction": "Tap to Reveal"
     }
   },
@@ -36,19 +36,19 @@
       "badge": "Exceptional Offer",
       "exclusive_deal": "Exclusive Deal",
       "delivery": "FREE Delivery",
-      "delivery_time": "by Tomorrow",
+      "delivery_time": "tomorrow",
       "deal_tag": "Deal"
     },
     "product": {
       "amazon_choice": "Choice",
-      "list_price": "List Price:"
+      "list_price": "RRP:"
     },
     "result": {
-      "deal_unlocked": "Special Offer Unlocked!",
+      "deal_unlocked": "Special deal unlocked!",
       "get": "Get",
-      "for": "for just",
+      "for": "now for only",
       "exclusive": "Exclusive offer",
-      "limited": "Limited time offer - Order now"
+      "limited": "Time-limited offer - Order now"
     }
   },
   "shopify": {
@@ -56,43 +56,79 @@
     "badge": "Limited Time Offer",
     "verified_seller": "Verified Seller",
     "deal_tag": "SALE",
-    "list_price": "Regular:",
-    "shipping": "Fast & Secure Shipping",
-    "delivery": "Express Shipping",
-    "delivery_time": "2-5 Business Days",
+    "list_price": "Regular price:",
+    "shipping": "Fast & Secure Delivery",
+    "delivery": "Express Delivery",
+    "delivery_time": "2-5 Working Days",
     "product": {
       "verified": "Verified",
-      "list_price": "Regular:"
+      "list_price": "Regular price:"
     },
     "result": {
-      "deal_unlocked": "Special Offer Unlocked!",
+      "deal_unlocked": "Flash deal unlocked!",
       "get": "Get",
-      "for": "for just",
-      "exclusive": "Exclusive store offer",
-      "limited": "Limited time offer - Shop now"
+      "for": "now for only",
+      "exclusive": "Exclusive shop offer.",
+      "limited": "Limited time offer - Buy now"
     }
   },
   "ebay": {
-    "exclusive_deal": "Daily Deals",
-    "badge": "Today's Featured Deal",
+    "exclusive_deal": "Today's Deals",
+    "badge": "Deal of the Day",
     "deal_badge": "Special Deal of the Day",
     "top_rated": "Top Rated Plus",
     "deal_tag": "DEAL",
     "list_price": "Was:",
-    "shipping": "Fast & Free Shipping",
-    "delivery": "Express Shipping",
+    "shipping": "Fast & Free Delivery",
+    "delivery": "Express Delivery",
     "delivery_time": "30-Day Returns",
-    "fast_shipping": "Express Shipping",
+    "fast_shipping": "Express Delivery",
     "product": {
       "top_rated": "Top Rated Plus Seller",
       "list_price": "Was:"
     },
     "result": {
-      "deal_unlocked": "Special Offer Unlocked!",
+      "deal_unlocked": "Deal unlocked!",
       "get": "Get",
-      "for": "for just",
-      "exclusive": "Exclusive eBay offer",
-      "limited": "Limited time offer - Buy it now"
+      "for": "now for only",
+      "exclusive": "Exclusive eBay offer.",
+      "limited": "Limited time offer - Buy now"
+    }
+  },
+  "checkout": {
+    "title": "Complete Your Order",
+    "summary_title": "Order Summary",
+    "list_price": "RRP:",
+    "total": "Total:",
+    "shipping_address": "Delivery Address",
+    "contact_info": "Contact Information",
+    "submit_button": "Complete Purchase",
+    "processing_button": "Processing..."
+  },
+  "lead_form": {
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "address": "Address",
+    "city": "Town/City",
+    "zip_code": "Eircode",
+    "email": "Email Address",
+    "phone": "Phone Number"
+  },
+  "page_title": {
+    "amazon": {
+       "box": "Amazon - Box Game Offer",
+       "scratch": "Amazon - Scratch Card Offer",
+       "slot": "Amazon - Slot Machine Offer"
+    },
+    "ebay": {
+       "box": "eBay - Box Game Deal",
+       "scratch": "eBay - Scratch Card Deal",
+       "slot": "eBay - Slot Machine Deal"
+    },
+    "shopify": {
+       "box": "Shopify - Box Game Special",
+       "scratch": "Shopify - Scratch Card Special",
+       "slot": "Shopify - Slot Machine Special"
     }
   }
 }
