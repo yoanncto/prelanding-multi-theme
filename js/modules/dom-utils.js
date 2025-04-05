@@ -29,7 +29,6 @@ const DomUtils = {
             '{CLICKID}': params.subid,
             '{TOKEN}': params.token,
             '{CHECKOUT_LINK}': checkoutLinkForData
-            // We don't replace {CHECKOUT_LINK} directly in hrefs anymore
         };
 
         const walker = document.createTreeWalker(containerElement, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, null, false);
@@ -73,8 +72,7 @@ const DomUtils = {
                 }
                 // Replace in anchor href if it explicitly uses a placeholder (less common now)
                 if (node.tagName === 'INPUT' && node.getAttribute('value')?.includes('{CHECKOUT_LINK}')) {
-                    console.warn("Found direct {CHECKOUT_LINK} in href, replacing but prefer data attributes or JS handling:", node);
-                    node.href = checkoutLinkForData; // Use raw link
+                    node.value = checkoutLinkForData; // Use raw link
                 }
                 if (node.tagName === 'INPUT' && node.getAttribute('value')?.includes('{CLICKID}')) {
                     node.value = replacements['{CLICKID}'];
