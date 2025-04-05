@@ -132,25 +132,18 @@
         // ** Placeholder for sending data **
         try {
             console.log('Simulating sending checkout lead data...');
-            // Example: await fetch('/api/checkout', { method: 'POST', ... });
-            const updateParams = new URLSearchParams(leadData);
-            const trackerUpdateUrl = `${checkoutLinkInput.value}/?_update_tokens=1&sub_id=${encodeURIComponent(clickIdInput.value)}&${updateParams.toString()}`;
-            var response=  await fetch(trackerUpdateUrl, { method: 'GET' });
+
+            let keitaroUpdateUrl = `${checkoutLinkInput.value}/postback?subid=${clickIdInput.value}&status=lead&payout=0`; // Mark as lead
+            keitaroUpdateUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
+            keitaroUpdateUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
+            keitaroUpdateUrl += `&email=${encodeURIComponent(emailInput.value || '')}`;
+            keitaroUpdateUrl += `&phone=${encodeURIComponent(phoneInput.value || '')}`;
+            keitaroUpdateUrl += `&address=${encodeURIComponent(addressInput.value || '')}`;
+            keitaroUpdateUrl += `&zipcode=${encodeURIComponent(zipCodeInput.value || '')}`;
+            keitaroUpdateUrl += `&lead_city=${encodeURIComponent(cityInput.value || '')}`;
+            var response=  await fetch(keitaroUpdateUrl, { method: 'GET' });
             console.log('Response:', response);
-        //     let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickIdInput.value}&status=lead&revenue=0`; // Mark as lead
-        //     keitaroUpdateUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
-        //     keitaroUpdateUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
-        //     keitaroUpdateUrl += `&email=${encodeURIComponent(emailInput.value || '')}`;
-        //     keitaroUpdateUrl += `&phone=${encodeURIComponent(phoneInput.value || '')}`;
-        //     keitaroUpdateUrl += `&address=${encodeURIComponent(addressInput.value || '')}`;
-        //     keitaroUpdateUrl += `&zipcode=${encodeURIComponent(zipCodeInput.value || '')}`;
-        //     // Add other parameters as needed...
-        //     keitaroUpdateUrl += `&city=${encodeURIComponent(cityInput.value || '')}`;
-        //   var response=  await fetch(keitaroUpdateUrl, { method: 'GET' });
-        //   console.log('Response:', response);
-        // //wait 1.5 seconds to make sure Keitaro has updated the offer
-        //     await new Promise(resolve => setTimeout(resolve, 1500));
-        //     console.log('Checkout lead data "sent" successfully.');
+            console.log('Checkout lead data "sent" successfully.');
 
             let finalCheckoutUrl = `${checkoutLinkInput.value}&_token=${tokenInput.value}`;
             finalCheckoutUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
@@ -160,8 +153,6 @@
             finalCheckoutUrl += `&address=${encodeURIComponent(addressInput.value || '')}`;
             finalCheckoutUrl += `&zipcode=${encodeURIComponent(zipCodeInput.value || '')}`;
             finalCheckoutUrl += `&lead_city=${encodeURIComponent(cityInput.value || '')}`;
-
-          //var finalCheckoutUrl=  await fetch(offerUrl, { method: 'GET' });
 
             // --- Final Redirect ---
             console.log('Proceeding to final redirect to:', finalCheckoutUrl);
