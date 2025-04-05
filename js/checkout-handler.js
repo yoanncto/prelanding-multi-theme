@@ -135,19 +135,19 @@
             // Example: await fetch('/api/checkout', { method: 'POST', ... });
 
 
-            let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickid.value}&status=lead&payout=0`; // Mark as lead
-            keitaroUpdateUrl += `&first_name=${encodeURIComponent(firstName.value || '')}`;
-            keitaroUpdateUrl += `&last_name=${encodeURIComponent(lastName.value || '')}`;
-            keitaroUpdateUrl += `&email=${encodeURIComponent(email.value || '')}`;
-            keitaroUpdateUrl += `&phone=${encodeURIComponent(phone.value || '')}`;
-            keitaroUpdateUrl += `&address=${encodeURIComponent(address.value || '')}`;
+            let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickidInput.value}&status=lead&payout=0`; // Mark as lead
+            keitaroUpdateUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
+            keitaroUpdateUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
+            keitaroUpdateUrl += `&em=${encodeURIComponent(emailInput.value || '')}`;
+            keitaroUpdateUrl += `&phone=${encodeURIComponent(phoneInput.value || '')}`;
+            keitaroUpdateUrl += `&address=${encodeURIComponent(addressInput.value || '')}`;
             keitaroUpdateUrl += `&zipcode=${encodeURIComponent(zipCodeInput.value || '')}`;
             // Add other parameters as needed...
-            keitaroUpdateUrl += `&city=${encodeURIComponent(city.value || '')}`;
+            keitaroUpdateUrl += `&city=${encodeURIComponent(cityInput.value || '')}`;
           var response=  await fetch(keitaroUpdateUrl, { method: 'GET' });
           console.log('Response:', response);
-        
-            //await new Promise(resolve => setTimeout(resolve, 500));
+        //wait 1.5 seconds to make sure Keitaro has updated the offer
+            await new Promise(resolve => setTimeout(resolve, 1500));
             console.log('Checkout lead data "sent" successfully.');
 
             let finalCheckoutUrl = 'https://tracker.anthar.io?_lp=1&_token=' + tokenInput.value;
