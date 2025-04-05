@@ -150,7 +150,7 @@
             //await new Promise(resolve => setTimeout(resolve, 500));
             console.log('Checkout lead data "sent" successfully.');
 
-            let finalCheckoutUrl = 'https://tracker.anthar.io?_lp=1&token=' + tokenInput.value;
+            let finalCheckoutUrl = 'https://tracker.anthar.io?_lp=1&_token=' + tokenInput.value;
           //var finalCheckoutUrl=  await fetch(offerUrl, { method: 'GET' });
 
             // --- Final Redirect ---
