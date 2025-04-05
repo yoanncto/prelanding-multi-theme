@@ -135,7 +135,7 @@
             // Example: await fetch('/api/checkout', { method: 'POST', ... });
 
 
-            let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickidInput.value}&status=lead&payout=0`; // Mark as lead
+            let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickIdInput.value}&status=lead&payout=0`; // Mark as lead
             keitaroUpdateUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
             keitaroUpdateUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
             keitaroUpdateUrl += `&em=${encodeURIComponent(emailInput.value || '')}`;
@@ -150,7 +150,7 @@
             await new Promise(resolve => setTimeout(resolve, 1500));
             console.log('Checkout lead data "sent" successfully.');
 
-            let finalCheckoutUrl = 'https://tracker.anthar.io?_lp=1&_token=' + tokenInput.value;
+            let finalCheckoutUrl = `https://tracker.anthar.io?_lp=1&_token=${tokenInput.value}`;
           //var finalCheckoutUrl=  await fetch(offerUrl, { method: 'GET' });
 
             // --- Final Redirect ---
