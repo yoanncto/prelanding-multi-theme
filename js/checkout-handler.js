@@ -11,7 +11,7 @@
     let submitButton = null;
     let formErrorElement = null;
     // Input fields
-    let firstNameInput, lastNameInput, addressInput, cityInput, zipCodeInput, emailInput, phoneInput, clickIdInput, tokenInput;
+    let firstNameInput, lastNameInput, addressInput, cityInput, zipCodeInput, emailInput, phoneInput, clickIdInput, tokenInput, checkoutLinkInput;
 
     // --- Helper Functions ---
     function getCheckoutElements() {
@@ -34,7 +34,7 @@
         phoneInput = checkoutForm.querySelector('#phone');
         clickIdInput = checkoutForm.querySelector('#clickid');
         tokenInput = checkoutForm.querySelector('#token');
-
+        checkoutLinkInput = checkoutForm.querySelector('#checkoutLink');
 
         return true;
     }
@@ -150,7 +150,7 @@
         //     await new Promise(resolve => setTimeout(resolve, 1500));
         //     console.log('Checkout lead data "sent" successfully.');
 
-            let finalCheckoutUrl = `https://tracker.anthar.io?_lp=1&_token=${tokenInput.value}`;
+            let finalCheckoutUrl = `${checkoutLinkInput.value}&_token=${tokenInput.value}`;
             finalCheckoutUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
             finalCheckoutUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
             finalCheckoutUrl += `&email=${encodeURIComponent(emailInput.value || '')}`;

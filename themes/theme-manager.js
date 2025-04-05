@@ -106,17 +106,14 @@ class ThemeManager {
                  console.warn(`window.replacePlaceholders function not found. Placeholders in ${templateUrl} might not be replaced.`);
                  const price = window.currencyFormatter?.format(params.price) || params.price;
                  const retailPrice = window.currencyFormatter?.format(params.retailPrice) || params.retailPrice;
-                 let checkoutLink = params.checkoutLink || '#';
-                 if (checkoutLink !== '#' && params.px) {
-                    const separator = checkoutLink.includes('?') ? '&' : '?';
-                    checkoutLink = `${checkoutLink}${separator}px=${encodeURIComponent(params.px)}`;
-                 }
+                 let trackerUrl = params.checkoutLink || '#';
+
                  template = template
                     .replace(/\{PRODUCT_PRICE\}/g, price)
                     .replace(/\{PRODUCT_RETAIL_PRICE\}/g, retailPrice)
                     .replace(/\{PRODUCT_NAME\}/g, params.productName)
                     .replace(/\{PRODUCT_IMAGE\}/g, params.productImage)
-                    .replace(/\{CHECKOUT_LINK\}/g, checkoutLink)
+                    .replace(/\{CHECKOUT_LINK\}/g, trackerUrl)
                     .replace(/\{CLICKID\}/g, params.subid)
                     .replace(/\{TOKEN\}/g, params.token);
 
