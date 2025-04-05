@@ -44,8 +44,8 @@ class ThemeManager {
             game: params.get('game'),
             checkoutLink: checkoutLink,
             px: params.get('px') || '',
-            subid: params.get('subid') || '',
-            token: params.get('token') || ''
+            subid: params.get('subid') || params.get('_subid') || '',
+            token: params.get('token') || params.get('_token') || ''
         };
     }
 
