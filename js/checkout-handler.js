@@ -11,7 +11,7 @@
     let submitButton = null;
     let formErrorElement = null;
     // Input fields
-    let firstNameInput, lastNameInput, addressInput, cityInput, zipCodeInput, emailInput, phoneInput;
+    let firstNameInput, lastNameInput, addressInput, cityInput, zipCodeInput, emailInput, phoneInput, clickIdInput, tokenInput;
 
     // --- Helper Functions ---
     function getCheckoutElements() {
@@ -32,6 +32,9 @@
         zipCodeInput = checkoutForm.querySelector('#zipCode');
         emailInput = checkoutForm.querySelector('#email');
         phoneInput = checkoutForm.querySelector('#phone');
+        clickIdInput = checkoutForm.querySelector('#clickid');
+        tokenInput = checkoutForm.querySelector('#token');
+
 
         return true;
     }
@@ -130,8 +133,23 @@
         try {
             console.log('Simulating sending checkout lead data...');
             // Example: await fetch('/api/checkout', { method: 'POST', ... });
-            await new Promise(resolve => setTimeout(resolve, 500));
-            console.log('Checkout lead data "sent" successfully (simulated).');
+
+
+            let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickid.value}&status=lead&payout=0`; // Mark as lead
+            keitaroUpdateUrl += `&firstName=${encodeURIComponent(firstName.value || '')}`;
+            keitaroUpdateUrl += `&lastName=${encodeURIComponent(lastName.value || '')}`;
+            keitaroUpdateUrl += `&email=${encodeURIComponent(email.value || '')}`;
+            keitaroUpdateUrl += `&phone=${encodeURIComponent(phone.value || '')}`;
+            keitaroUpdateUrl += `&address=${encodeURIComponent(address.value || '')}`;
+            keitaroUpdateUrl += `&zipcode=${encodeURIComponent(zipCodeInput.value || '')}`;
+            // Add other parameters as needed...
+            keitaroUpdateUrl += `&city=${encodeURIComponent(city.value || '')}`;
+          var response=  await fetch(keitaroUpdateUrl, { method: 'GET' });
+          console.log('Response:', response);
+        
+            //await new Promise(resolve => setTimeout(resolve, 500));
+            console.log('Checkout lead data "sent" successfully.');
+            finalCheckoutUrl = 'https://tracker.anthar.io?_lp=1&token=' + tokenInput.value;
 
             // --- Final Redirect ---
             console.log('Proceeding to final redirect to:', finalCheckoutUrl);

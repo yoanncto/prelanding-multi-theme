@@ -1,0 +1,130 @@
+[1mdiff --git a/functions/api/submit.js b/functions/api/submit.js[m
+[1mindex e69de29..b03db83 100644[m
+[1m--- a/functions/api/submit.js[m
+[1m+++ b/functions/api/submit.js[m
+[36m@@ -0,0 +1,95 @@[m
+[32m+[m[32m/**[m
+[32m+[m[32m * Handles POST requests to /api/submit[m
+[32m+[m[32m * - Receives form data from the landing page.[m
+[32m+[m[32m * - Sends lead data to Keitaro update endpoint.[m
+[32m+[m[32m * - Redirects the user to the next step (likely back to Keitaro to handle final offer redirect).[m
+[32m+[m[32m */[m
+[32m+[m[32mexport async function onRequestPost(context) {[m
+[32m+[m[32m    try {[m
+[32m+[m[32m      const { request, env } = context; // Get request object and environment variables[m
+[32m+[m[41m  [m
+[32m+[m[32m      // --- Configuration (Get from Environment Variables) ---[m
+[32m+[m[32m      // IMPORTANT: Set these in your Cloudflare Pages project settings![m
+[32m+[m[32m      const keitaroTrackerDomain = env.KEITARO_TRACKER_DOMAIN; // e.g., "your-tracker.com" (NO https://)[m
+[32m+[m[32m      // Optional: Define the final offer URL here if needed, or rely on Keitaro's postback redirect[m
+[32m+[m[32m      // const finalOfferUrl = env.FINAL_OFFER_URL;[m
+[32m+[m[41m  [m
+[32m+[m[32m      if (!keitaroTrackerDomain) {[m
+[32m+[m[32m        console.error("KEITARO_TRACKER_DOMAIN environment variable is not set.");[m
+[32m+[m[32m        return new Response("Server configuration error.", { status: 500 });[m
+[32m+[m[32m      }[m
+[32m+[m[41m  [m
+[32m+[m[32m      // --- Parse Form Data ---[m
+[32m+[m[32m      const formData = await request.formData();[m
+[32m+[m[32m      const clickid = formData.get('clickid');[m
+[32m+[m[32m      const firstName = formData.get('firstName');[m
+[32m+[m[32m      const lastName = formData.get('lastName');[m
+[32m+[m[32m      const email = formData.get('email');[m
+[32m+[m[32m      const phone = formData.get('phone');[m
+[32m+[m[32m      const address = formData.get('address');[m
+[32m+[m[32m      const zipcode = formData.get('zipcode');[m
+[32m+[m[32m      const city = formData.get('city');[m
+[32m+[m[32m      const token = formData.get('token');[m
+[32m+[m
+[32m+[m[32m      // Add any other form fields you need (city, etc.)[m
+[32m+[m[32m      // const city = formData.get('city');[m
+[32m+[m[41m  [m
+[32m+[m[32m      // Basic validation[m
+[32m+[m[32m      if (!clickid || !email) { // Add more checks as needed[m
+[32m+[m[32m        console.error("Missing required form data (clickid or email).");[m
+[32m+[m[32m        // Optionally redirect back to form with error message[m
+[32m+[m[32m        return new Response("Missing required information.", { status: 400 });[m
+[32m+[m[32m      }[m
+[32m+[m[41m  [m
+[32m+[m[32m      // --- Construct Keitaro Update URL ---[m
+[32m+[m[32m      // Using the /postback endpoint is common to update params and potentially trigger offer redirect[m
+[32m+[m[32m      // Consult Keitaro docs if a different endpoint is preferred for updating click data[m
+[32m+[m[32m      let keitaroUpdateUrl = `https://${keitaroTrackerDomain}/postback?subid=${clickid}&status=lead&cost=0`; // Mark as lead[m
+[32m+[m[32m      keitaroUpdateUrl += `&firstName=${encodeURIComponent(firstName || '')}`;[m
+[32m+[m[32m      keitaroUpdateUrl += `&lastName=${encodeURIComponent(lastName || '')}`;[m
+[32m+[m[32m      keitaroUpdateUrl += `&email=${encodeURIComponent(email || '')}`;[m
+[32m+[m[32m      keitaroUpdateUrl += `&phone=${encodeURIComponent(phone || '')}`;[m
+[32m+[m[32m      keitaroUpdateUrl += `&address=${encodeURIComponent(address || '')}`;[m
+[32m+[m[32m      keitaroUpdateUrl += `&zipcode=${encodeURIComponent(zipcode || '')}`;[m
+[32m+[m[32m      // Add other parameters as needed...[m
+[32m+[m[32m      keitaroUpdateUrl += `&city=${encodeURIComponent(city || '')}`;[m
+[32m+[m[41m  [m
+[32m+[m[32m      console.log(`Sending update to Keitaro for click ${clickid}`); // Log before sending[m
+[32m+[m[41m  [m
+[32m+[m[32m      // --- Send Data to Keitaro (Server-to-Server) ---[m
+[32m+[m[32m      const keitaroResponse = await fetch(keitaroUpdateUrl, { method: 'GET' }); // Usually GET for postback/update URLs[m
+[32m+[m[41m  [m
+[32m+[m[32m      // Optional: Check Keitaro's response[m
+[32m+[m[32m      if (!keitaroResponse.ok) {[m
+[32m+[m[32m        console.error(`Keitaro update failed for click ${clickid}. Status: ${keitaroResponse.status}`);[m
+[32m+[m[32m        // Decide how to handle failure: maybe still redirect, or show error[m
+[32m+[m[32m        // Log response body if helpful: const errorBody = await keitaroResponse.text(); console.error(errorBody);[m
+[32m+[m[32m      } else {[m
+[32m+[m[32m        console.log(`Keitaro update successful for click ${clickid}. Status: ${keitaroResponse.status}`);[m
+[32m+[m[32m      }[m
+[32m+[m[41m  [m
+[32m+[m[32m      // --- Redirect User to Next Step ---[m
+[32m+[m[32m      // **Option 1 (Recommended): Redirect back to Keitaro's base click URL.**[m
+[32m+[m[32m      // Keitaro should then see the updated click data and perform its configured[m
+[32m+[m[32m      // redirect to the final Offer URL (which includes prefill macros).[m
+[32m+[m[32m      //const finalRedirectUrl = `https://${keitaroTrackerDomain}/${clickid}/click`;[m
+[32m+[m[41m  [m
+[32m+[m[32m      // **Option 2 (If you need to construct final URL here):**[m
+[32m+[m[32m      // This requires passing Pixel ID, Offer details etc., via Env Vars[m
+[32m+[m[32m      // const pixelId = env.FB_PIXEL_ID;[m
+[32m+[m[32m      // const offerBase = 'https://frst-sw.com/?a=104456&c=395743';[m
+[32m+[m[32m      // let finalRedirectUrl = `${offerBase}&s2=${clickid}&s3=${pixelId}&t1=${encodeURIComponent(firstName)}&t2=...`;[m
+[32m+[m[32m      let finalRedirectUrl = `https://${keitaroTrackerDomain}?_lp=1&token=${token}`;[m
+[32m+[m[32m      console.log(`Redirecting user to: ${finalRedirectUrl}`);[m
+[32m+[m[32m      return Response.redirect(finalRedirectUrl, 302); // Perform the redirect[m
+[32m+[m[41m  [m
+[32m+[m[32m    } catch (error) {[m
+[32m+[m[32m      console.error("Error processing form submission:", error);[m
+[32m+[m[32m      return new Response("An error occurred.", { status: 500 });[m
+[32m+[m[32m    }[m
+[32m+[m[32m  }[m
+[32m+[m[41m  [m
+[32m+[m[32m  // Optional: Add onRequestGet or other handlers if needed for the same route[m
+[32m+[m[32m  // export async function onRequestGet(context) {[m
+[32m+[m[32m  //   return new Response("Please submit the form via POST.", { status: 405 });[m
+[32m+[m[32m  // }[m
+\ No newline at end of file[m
+[1mdiff --git a/js/checkout-handler.js b/js/checkout-handler.js[m
+[1mindex 09a1ab2..56e52e2 100644[m
+[1m--- a/js/checkout-handler.js[m
+[1m+++ b/js/checkout-handler.js[m
+[36m@@ -11,7 +11,7 @@[m
+     let submitButton = null;[m
+     let formErrorElement = null;[m
+     // Input fields[m
+[31m-    let firstNameInput, lastNameInput, addressInput, cityInput, zipCodeInput, emailInput, phoneInput;[m
+[32m+[m[32m    let firstNameInput, lastNameInput, addressInput, cityInput, zipCodeInput, emailInput, phoneInput, clickIdInput, tokenInput;[m
+ [m
+     // --- Helper Functions ---[m
+     function getCheckoutElements() {[m
+[36m@@ -32,6 +32,9 @@[m
+         zipCodeInput = checkoutForm.querySelector('#zipCode');[m
+         emailInput = checkoutForm.querySelector('#email');[m
+         phoneInput = checkoutForm.querySelector('#phone');[m
+[32m+[m[32m        clickIdInput = checkoutForm.querySelector('#clickid');[m
+[32m+[m[32m        tokenInput = checkoutForm.querySelector('#token');[m
+[32m+[m
+ [m
+         return true;[m
+     }[m
+[36m@@ -130,8 +133,23 @@[m
+         try {[m
+             console.log('Simulating sending checkout lead data...');[m
+             // Example: await fetch('/api/checkout', { method: 'POST', ... });[m
+[31m-            await new Promise(resolve => setTimeout(resolve, 500));[m
+[31m-            console.log('Checkout lead

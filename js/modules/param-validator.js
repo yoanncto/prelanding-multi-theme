@@ -7,7 +7,8 @@ const ParamValidator = {
     /**
      * Required parameters for the application
      */
-    requiredParams: ['price', 'productName', 'productImage', 'checkoutLink'],
+    requiredParams: ['price', 'productName', 'productImage',
+       'retailPrice', 'checkoutLink','theme','game','subid','token'],
     
     /**
      * Validate that all required URL parameters are present

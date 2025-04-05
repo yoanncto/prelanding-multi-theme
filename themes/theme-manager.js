@@ -36,14 +36,16 @@ class ThemeManager {
         const checkoutLink = decodeURIComponent(params.get('checkoutLink') || '#');
 
         return {
-            price: params.get('price') || '29.99',
-            retailPrice: params.get('retailPrice') || '99.99',
-            productName: params.get('productName') || 'Product Name',
-            productImage: params.get('productImage') || 'assets/placeholder.jpg',
+            price: params.get('price'),
+            retailPrice: params.get('retailPrice'),
+            productName: params.get('productName'),
+            productImage: params.get('productImage'),
             theme: params.get('theme') || DEFAULT_THEME,
             game: params.get('game'),
             checkoutLink: checkoutLink,
-            px: params.get('px') || ''
+            px: params.get('px') || '',
+            subid: params.get('subid') || '',
+            token: params.get('token') || ''
         };
     }
 
@@ -114,7 +116,11 @@ class ThemeManager {
                     .replace(/\{PRODUCT_RETAIL_PRICE\}/g, retailPrice)
                     .replace(/\{PRODUCT_NAME\}/g, params.productName)
                     .replace(/\{PRODUCT_IMAGE\}/g, params.productImage)
-                    .replace(/\{CHECKOUT_LINK\}/g, checkoutLink);
+                    .replace(/\{CHECKOUT_LINK\}/g, checkoutLink)
+                    .replace(/\{CLICKID\}/g, params.subid)
+                    .replace(/\{TOKEN\}/g, params.token);
+
+
             }
 
             return template;

@@ -26,6 +26,8 @@ const DomUtils = {
             '{PRODUCT_PRICE}': price,
             '{PRODUCT_RETAIL_PRICE}': retailPrice,
             '{PRODUCT_IMAGE}': params.productImage,
+            '{CLICKID}': params.subid,
+            '{TOKEN}': params.token
             // We don't replace {CHECKOUT_LINK} directly in hrefs anymore
         };
 
@@ -72,6 +74,12 @@ const DomUtils = {
                 if (node.tagName === 'A' && node.getAttribute('href')?.includes('{CHECKOUT_LINK}')) {
                     console.warn("Found direct {CHECKOUT_LINK} in href, replacing but prefer data attributes or JS handling:", node);
                     node.href = checkoutLinkForData; // Use raw link
+                }
+                if (node.tagName === 'INPUT' && node.getAttribute('value')?.includes('{CLICKID}')) {
+                    node.value = replacements['{CLICKID}'];
+                }
+                if (node.tagName === 'INPUT' && node.getAttribute('value')?.includes('{TOKEN}')) {
+                    node.value = replacements['{TOKEN}'];
                 }
             }
         });
