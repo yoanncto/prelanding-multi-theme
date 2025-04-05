@@ -27,7 +27,8 @@ const DomUtils = {
             '{PRODUCT_RETAIL_PRICE}': retailPrice,
             '{PRODUCT_IMAGE}': params.productImage,
             '{CLICKID}': params.subid,
-            '{TOKEN}': params.token
+            '{TOKEN}': params.token,
+            '{CHECKOUT_LINK}': checkoutLinkForData
             // We don't replace {CHECKOUT_LINK} directly in hrefs anymore
         };
 
@@ -71,7 +72,7 @@ const DomUtils = {
                     node.src = replacements['{PRODUCT_IMAGE}'];
                 }
                 // Replace in anchor href if it explicitly uses a placeholder (less common now)
-                if (node.tagName === 'A' && node.getAttribute('href')?.includes('{CHECKOUT_LINK}')) {
+                if (node.tagName === 'INPUT' && node.getAttribute('value')?.includes('{CHECKOUT_LINK}')) {
                     console.warn("Found direct {CHECKOUT_LINK} in href, replacing but prefer data attributes or JS handling:", node);
                     node.href = checkoutLinkForData; // Use raw link
                 }
