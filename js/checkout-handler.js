@@ -133,8 +133,10 @@
         try {
             console.log('Simulating sending checkout lead data...');
             // Example: await fetch('/api/checkout', { method: 'POST', ... });
-
-
+            const updateParams = new URLSearchParams(leadData);
+            const trackerUpdateUrl = `${checkoutLinkInput.value}/?_update_tokens=1&sub_id=${encodeURIComponent(clickIdInput.value)}&${updateParams.toString()}`;
+            var response=  await fetch(trackerUpdateUrl, { method: 'GET' });
+            console.log('Response:', response);
         //     let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickIdInput.value}&status=lead&revenue=0`; // Mark as lead
         //     keitaroUpdateUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
         //     keitaroUpdateUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
