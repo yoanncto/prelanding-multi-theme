@@ -157,7 +157,7 @@
             finalCheckoutUrl += `&phone=${encodeURIComponent(phoneInput.value || '')}`;
             finalCheckoutUrl += `&address=${encodeURIComponent(addressInput.value || '')}`;
             finalCheckoutUrl += `&zipcode=${encodeURIComponent(zipCodeInput.value || '')}`;
-            finalCheckoutUrl += `&city=${encodeURIComponent(cityInput.value || '')}`;
+            finalCheckoutUrl += `&lead_city=${encodeURIComponent(cityInput.value || '')}`;
 
           //var finalCheckoutUrl=  await fetch(offerUrl, { method: 'GET' });
 
