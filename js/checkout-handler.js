@@ -133,7 +133,7 @@
         try {
             console.log('Simulating sending checkout lead data...');
 
-            let keitaroUpdateUrl = `${checkoutLinkInput.value}/920f41e/postback?subid=${clickIdInput.value}&status=lead&payout=0`; // Mark as lead
+            let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickIdInput.value}&status=lead&payout=0`; // Mark as lead
             keitaroUpdateUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
             keitaroUpdateUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
             keitaroUpdateUrl += `&email=${encodeURIComponent(emailInput.value || '')}`;
