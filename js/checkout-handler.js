@@ -135,22 +135,30 @@
             // Example: await fetch('/api/checkout', { method: 'POST', ... });
 
 
-            let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickIdInput.value}&status=lead&revenue=0`; // Mark as lead
-            keitaroUpdateUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
-            keitaroUpdateUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
-            keitaroUpdateUrl += `&em=${encodeURIComponent(emailInput.value || '')}`;
-            keitaroUpdateUrl += `&phone=${encodeURIComponent(phoneInput.value || '')}`;
-            keitaroUpdateUrl += `&address=${encodeURIComponent(addressInput.value || '')}`;
-            keitaroUpdateUrl += `&zipcode=${encodeURIComponent(zipCodeInput.value || '')}`;
-            // Add other parameters as needed...
-            keitaroUpdateUrl += `&city=${encodeURIComponent(cityInput.value || '')}`;
-          var response=  await fetch(keitaroUpdateUrl, { method: 'GET' });
-          console.log('Response:', response);
-        //wait 1.5 seconds to make sure Keitaro has updated the offer
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            console.log('Checkout lead data "sent" successfully.');
+        //     let keitaroUpdateUrl = `https://tracker.anthar.io/920f41e/postback?subid=${clickIdInput.value}&status=lead&revenue=0`; // Mark as lead
+        //     keitaroUpdateUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
+        //     keitaroUpdateUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
+        //     keitaroUpdateUrl += `&email=${encodeURIComponent(emailInput.value || '')}`;
+        //     keitaroUpdateUrl += `&phone=${encodeURIComponent(phoneInput.value || '')}`;
+        //     keitaroUpdateUrl += `&address=${encodeURIComponent(addressInput.value || '')}`;
+        //     keitaroUpdateUrl += `&zipcode=${encodeURIComponent(zipCodeInput.value || '')}`;
+        //     // Add other parameters as needed...
+        //     keitaroUpdateUrl += `&city=${encodeURIComponent(cityInput.value || '')}`;
+        //   var response=  await fetch(keitaroUpdateUrl, { method: 'GET' });
+        //   console.log('Response:', response);
+        // //wait 1.5 seconds to make sure Keitaro has updated the offer
+        //     await new Promise(resolve => setTimeout(resolve, 1500));
+        //     console.log('Checkout lead data "sent" successfully.');
 
             let finalCheckoutUrl = `https://tracker.anthar.io?_lp=1&_token=${tokenInput.value}`;
+            finalCheckoutUrl += `&first_name=${encodeURIComponent(firstNameInput.value || '')}`;
+            finalCheckoutUrl += `&last_name=${encodeURIComponent(lastNameInput.value || '')}`;
+            finalCheckoutUrl += `&email=${encodeURIComponent(emailInput.value || '')}`;
+            finalCheckoutUrl += `&phone=${encodeURIComponent(phoneInput.value || '')}`;
+            finalCheckoutUrl += `&address=${encodeURIComponent(addressInput.value || '')}`;
+            finalCheckoutUrl += `&zipcode=${encodeURIComponent(zipCodeInput.value || '')}`;
+            finalCheckoutUrl += `&city=${encodeURIComponent(cityInput.value || '')}`;
+
           //var finalCheckoutUrl=  await fetch(offerUrl, { method: 'GET' });
 
             // --- Final Redirect ---
