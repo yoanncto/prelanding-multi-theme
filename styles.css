@@ -1,0 +1,138 @@
+/* Common styles for all themes */
+.prime-badge {
+    background: linear-gradient(135deg, #00A8E1 0%, #0077C2 100%);
+}
+
+.amazon-button {
+    background: linear-gradient(to bottom, #f8e3ad 0%, #EEBA37 100%);
+    border-color: #c89411;
+}
+.amazon-button:hover {
+    background: linear-gradient(to bottom, #f5d78e 0%, #eeb933 100%);
+}
+
+.ebay-button {
+    background: #0063D1;
+}
+.ebay-button:hover {
+    background: #004998;
+}
+
+.shopify-button {
+    background: linear-gradient(to bottom, #008060 0%, #004C3F 100%);
+}
+.shopify-button:hover {
+    background: linear-gradient(to bottom, #004C3F 0%, #002E25 100%);
+}
+
+/* Animation styles */
+.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-in {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeIn 0.3s ease forwards;
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Improved result section animations */
+#resultSection {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#resultSection.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Improved scratch game animations */
+.reveal-cover {
+    background: linear-gradient(135deg, #232F3E 30%, #37475A 100%);
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+.reveal-cover:hover {
+    background: linear-gradient(135deg, #37475A 30%, #232F3E 100%);
+}
+.reveal-cover.revealed {
+    opacity: 0;
+    pointer-events: none;
+}
+.reveal-cover .content {
+    transition: all 0.3s ease;
+}
+.reveal-cover:hover .content {
+    transform: scale(1.05);
+}
+
+/* Game content animations */
+#gameContent {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#gameContent.fade-out {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+/* Game overlay animations */
+#gameOverlay {
+    transition: opacity 0.3s ease;
+}
+#gameOverlay.fade-in {
+    animation: overlayFadeIn 0.3s ease forwards;
+}
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(4px);
+    }
+}
+
+/* Game-specific styles */
+.slot-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.slot {
+    background: #232F3E;
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+.spinning {
+    animation: spin 0.6s infinite linear;
+}
+@keyframes spin {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+
+.box {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.box:hover {
+    transform: scale(1.05);
+    background-color: #37475A;
+} 
